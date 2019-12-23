@@ -43,7 +43,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
-    'projectjose.social'
+    'projectjose.social',
+    'projectjose.core',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
