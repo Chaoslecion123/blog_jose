@@ -1,0 +1,345 @@
+
+.ft-bodyn{
+  padding-top: 56px;
+}
+
+.ft-bodyt{
+  padding-top: 0px;
+}
+
+nav>div.container{
+  padding: 0px;
+}
+nav>div.container>div.container{
+  padding: 0px;
+}
+
+.navbar{
+  background-color: rgba(0,0,0,0.3);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+div.ftmenu{
+  width: 100%;
+}
+
+.ftmtabla>li{
+  padding-top: 10px;
+  font-size: xx-large;
+  font-family: serif;
+}
+
+.navbar-dark .navbar-toggler{
+  border-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: #fff;
+}
+
+.navbar-toggler,.navbar-toggler:focus,.navbar-toggler:active {
+  outline: 0;
+  border-color: transparent;
+  padding-top: 10px
+}
+
+.navbar-toggler span {
+  display: block;
+  background-color: #fff;
+  height: 3px;
+  width: 20px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  position: relative;
+  left: 0;
+  opacity: 1;
+}
+
+.navbar-toggler span:nth-child(1),.navbar-toggler span:nth-child(3) {
+  -webkit-transition: transform .35s ease-in-out;
+  -moz-transition: transform .35s ease-in-out;
+  -o-transition: transform .35s ease-in-out;
+  transition: transform .35s ease-in-out;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(1) {
+  position: absolute;
+  left: 27px;
+  top: 18px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+  opacity: 0.9;
+  background-color: #fff;
+  width: 15px;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+  height: 12px;
+  visibility: hidden;
+  background-color: transparent;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+  position: absolute;
+  left: 27px;
+  top: 18px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  opacity: 0.9;
+  background-color: #fff;
+  width: 15px;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  background-color: #000;
+  border-color: #000;
+  box-shadow: none;
+}
+
+i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
+  color: #fff;
+  size: 5px;
+}
+.btn-circle:hover{
+  background-color: #000;
+  border-color: #000;
+  box-shadow: none;
+}
+
+.btn-circle:active{
+  background-color: #000;
+  border-color: #000;
+  border:0;
+}
+
+@media only screen and (max-width: 450px) {
+  #navpos1 {order: 3;}
+  #navpos2 {order: 1;}
+  #navpos3 {order: 2;}
+}
+
+@media only screen and (max-width: 576px) {
+  p.ftsocial,.ftft1,.ftft2{
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ftdesc{
+    padding-left: 75px;
+  }
+    .ft-contserv{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 991px){
+  #ft-oser1 {order: 1;}
+  #ft-oser2 {order: 2;}
+  #ft-oser3 {order: 3;}
+  #ft-oser4 {order: 4;}
+  #ft-oser5 {order: 5;}
+  .ft-contserv{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .container{
+    max-width: 1824px;
+  }
+}
+
+.card{
+  border: none;
+}
+
+.card-img{
+  border-radius: 0;
+}
+
+.ft-icon{
+  max-height: 1.6rem;
+  vertical-align: baseline;
+  padding-right: 10px;
+}
+
+.ft-tserv{
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.ft-pserv{
+  font-weight: 300;
+  text-decoration-color: #2b2b2b;
+  letter-spacing: 1pt;
+  font-size: 0.8em;
+}
+
+.ft-linkbt,.ft-linkbt:hover{
+  background-color: #000;
+  padding: 8px 25px 8px 25px;
+  color: #fff;
+  text-decoration-line: none;
+  border-radius: 20px;
+  letter-spacing: 1pt;
+}
+
+.ftcontbg{
+  background-image: url(../img/conbg.png);
+  background-color: #cccccc;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -200;
+}
+
+img.conimg{
+  width: 100%;
+  height: 360px;
+  object-position: 50% 50%;
+  object-fit: cover;
+  filter: brightness(0.8);  
+}
+
+.ft-contactcont{
+  padding-top: 30px;
+}
+
+.ft-postcont{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.ft-conth1{
+  font-family: serif;
+  font-weight: 700;
+  text-align: center;
+  color: #000;
+}
+
+.ft-contp{
+  font-family: serif;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.4em;
+  color: #7B7B7B;
+}
+
+label{
+  font-family: serif;
+  font-weight: 400;
+  font-size: 1.4em;
+  color: #7B7B7B;
+}
+
+.form-control,.form-control:focus{
+  box-shadow: none;
+  border-bottom-color: #7B7B7B;
+  border-top-color: rgba(0,0,0,0);
+  border-left-color: rgba(0,0,0,0);
+  border-right-color: rgba(0,0,0,0);
+  border-radius: 0;
+}
+
+.ft-btncont,.ft-btncont:focus,.ft-btncont:active,.ft-btncont:checked{
+  border: 0;
+  box-shadow: none;
+}
+
+img.ft-carimg{
+  width: 100%;
+  height: 360px;
+  object-position: 50% 50%;
+  object-fit: cover;
+  filter: brightness(0.8);  
+}
+
+.ft-posth1p{
+  margin-block-end: 0;
+  color: #A7A7A7;
+}
+
+h1.ft-posth1{
+  font-weight: 400;
+  letter-spacing: 1pt;
+}
+
+.ft-postp{
+  color: #A7A7A7;
+  letter-spacing: 1pt;
+  font-size: 0.8em;
+}
+
+.ft-postgal{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.ft-postgal>.row{
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+body > div:nth-child(3) > div > div > div > div{
+  background-color: rgba(0,0,0,0);
+  padding: 4px;
+}
+
+body > div:nth-child(3) > div > div > div > div > img{
+  height: 220px;
+  object-position: 50% 50%;
+  object-fit: cover;
+}
+
+body > div:nth-child(3) > div > div > div > div > hr{
+  width: 100px;
+}
+
+body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div{
+  position: relative;
+}
+
+body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 100%;
+  height: 400px;
+  border: 1px solid #000;
+  position: absolute;
+  z-index: -1
+}
+
+.ft-post-img{
+  width: 100%;
+  height: 400px;
+  object-position: 50% 50%;
+  object-fit: cover;
+}
