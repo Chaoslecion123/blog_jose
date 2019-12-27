@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block vendors_css %}
-<link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/circular-std/style.css' %}">
-<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}"> {% endcomment %}
 {% endblock vendors_css %}
 
 {% block core_css %}
@@ -39,7 +39,7 @@
             </a>
         </div>
         <div class="card-body">
-            {% comment %} {% include "storefront/auth/_forms/login.html" %} {% endcomment %}
+            {% include "storefront/auth/_forms/login.html" %}
         </div>
         <div class="card-footer p-0">
             <div class="card-footer-item card-footer-item-bordered">
