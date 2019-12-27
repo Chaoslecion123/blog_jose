@@ -1,0 +1,32 @@
+<a
+    href="{{ btn_target }}"
+    class="btn btn-{{ btn_type|default:'primary' }}
+    {% if small %}
+        btn-xs
+    {% endif %}
+    {{ btn_classes }}
+    {% if btn_disabled %}
+        disabled
+    {% endif %}"
+    {{ btn_attrs }}
+    {% if btn_data_label %}
+        data-label="{{ btn_data_label }}"
+    {% endif %}
+    {% if btn_disabled %}
+        aria-disabled="true"
+    {% endif %}>
+    {% if btn_icon %}
+        <i
+            class="fas fa-fw fa-{{ btn_icon }}
+            {% if btn_text %}
+                mr-1
+            {% endif %}"
+            {% if btn_icon_title %}
+                title="{{ btn_icon_title }}"
+            {% elif btn_text %}
+                title="{{ btn_text }}"
+            {% endif %}>
+        </i>
+    {% endif %}
+    {{ btn_text }}
+</a>

@@ -1,0 +1,10 @@
+{% if not without_wrapper %}
+    <div class="card prodabre-card">
+{% endif %}
+    <div class="card-body text-center">
+        <h3 class="mb-3">{% block title %}{% endblock title %}</h3>
+        {% block action %}{% endblock action %}
+    </div>
+{% if not without_wrapper %}
+    </div>
+{% endif %}

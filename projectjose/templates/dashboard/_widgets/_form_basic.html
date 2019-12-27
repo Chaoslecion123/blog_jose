@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load static %}
+
+<form id="id_{{ form_name }}" name="{{ form_name }}" class="form-horizontal" action="" method="{{ form_method|default:'post' }}"{% if multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    <div class="row">
+        <div class="mb-2 col-12">
+            {% crispy form %}
+        </div>
+        {% if not hide_buttons %}
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 text-left text-md-right"></div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-4">
+                        {% include './_button_save.html' %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</form>

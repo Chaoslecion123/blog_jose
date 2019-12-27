@@ -9,6 +9,8 @@ django==2.0.9
 
 # Environment
 django-environ==0.4.5
+python-decouple==3.3
+django-crispy-forms==1.7.2
 
 # Passwords security
 argon2-cffi==18.3.0

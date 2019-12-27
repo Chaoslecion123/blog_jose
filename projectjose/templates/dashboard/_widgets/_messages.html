@@ -1,0 +1,17 @@
+<div class="notifications-holder">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+                <div class="toast-header bg-info">
+                    <strong class="mr-auto text-light">Notificación</strong>
+                    <button type="button" class="ml-2 mb-1 close" style="opacity: 1!important;" data-dismiss="toast" aria-label="Close">
+                        <span class="text-light" aria-hidden="true"><small>&times;</small></span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

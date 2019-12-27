@@ -1,0 +1,20 @@
+<div class="card-body">
+    <div class="card-columns">
+        {% for attribute in atribute_list %}
+            <div class="card shadow-none border">
+                {% comment %} <img src="{{ image.image.url }}" alt="{{ image.alt|default:object.title }}" style="width:100%;"> {% endcomment %}
+                <div class="card-body border-top">
+                    <p class="card-text">{{ attribute.name }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:service-attribute-edit' pk=object.pk attribute_pk=attribute.pk %}">
+                        <i class="fas fa-fw fa-edit text-warning" title="Editar"></i>
+                    </a>
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:service-attribute-delete' pk=object.pk attribute_pk=attribute.pk %}" data-toggle="modal" data-target="#delete-modal-attribute">
+                        <i class="fas fa-fw fa-trash-alt text-danger" title="Eliminar"></i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

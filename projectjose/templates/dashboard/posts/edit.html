@@ -1,0 +1,22 @@
+{% extends './add.html' %}
+{% load static %}
+
+{% block view_header_title %}
+    Editar proyecto: {{ object.title }}
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:post-list' %}" class="breadcrumb-link">
+            Proyectos
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:post-detail' pk=object.pk %}" class="breadcrumb-link">
+            {{ object.title }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        Editar
+    </li>
+{% endblock view_breadcrumb_items %}

@@ -1,0 +1,55 @@
+{% extends 'storefront/base.html' %}
+{% load static %}
+
+{% block vendors_css %}
+<link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/circular-std/style.css' %}">
+<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
+{% endblock vendors_css %}
+
+{% block core_css %}
+  <link rel="stylesheet" href="{% static 'administrador/css/style.css' %}">
+{% endblock core_css %}
+
+{% block custom_css %}
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+</style>
+{% endblock custom_css %}
+
+{% block content %}
+<div class="splash-container">
+    <div class="card ">
+        <div class="card-header text-center">
+            <a href="#">
+                <img class="logo-img" src="{% static 'img/brandb.png' %}" alt="White House" style="width:60%">
+            </a>
+        </div>
+        <div class="card-body">
+            {% include "storefront/auth/_forms/login.html" %}
+        </div>
+        {% comment %}
+            <div class="card-body">
+                {% include "prodabre/_widgets/_form_basic.html" %}
+            </div>
+        {% endcomment %}
+        <div class="card-footer p-0  ">
+            <div class="card-footer-item card-footer-item-bordered">
+                Si olvido su contraseña pongase en contacto con el administrador.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -27,11 +27,13 @@
 
 <body class="ft-bodyt">
 
-  <!-- Imagen Encabezado -->
+
+ <!-- Imagen Encabezado -->
   <img src="{% static 'img/conbg.png' %}" class="conimg" style="" alt="...">
   <!-- /Imagen Encabezado -->
 
   <!-- Formulario -->
+  {% include "messages.html" %}
   <div class="ft-contactcont">
     <div class="container">
       <div class="row align-items-center">
@@ -43,18 +45,18 @@
       <div class="row align-items-center">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-          <form>
+          <form action="" method="POST">{% csrf_token %}
             <div class="form-group">
               <label for="formNombre">Cual es tu nombre?</label>
-              <input type="text" class="form-control" id="formNombre">
+              <input type="text" class="form-control" id="formNombre" name="name">
             </div>
             <div class="form-group">
               <label for="formCorreo">Y tu e-mail?</label>
-              <input type="e-mail" class="form-control" id="formCorreo">
+              <input type="email" class="form-control" id="formCorreo" name="email">
             </div>
             <div class="form-group">
               <label for="formTexto">Cuéntanos acerca de tu proyecto</label>
-              <input type="text" class="form-control" id="formTexto">
+              <input type="text" class="form-control" id="formTexto" name="text">
             </div>
             <button type="submit" class="btn float-right ft-btncont"><h1 class="ft-conth1">Enviar</h1></button>
           </form>
@@ -64,6 +66,7 @@
     </div>
   </div>
   <!-- /Formulario -->
+
 
   <!-- Footer -->
   <footer class="py-5 bg-light">
@@ -81,9 +84,15 @@
         </div>
         <div class="col-sm-3 ftft4 text-right">
           <p class="ftsocial">
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-instagram"></i></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-linkedin-in"></i></a>
+            {% if LINK_FACEBOOK %}
+              <a class="btn btn-circle" href="{{LINK_FACEBOOK}}" role="button"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if LINK_INSTAGRAM %}
+              <a class="btn btn-circle" href="{{LINK_INSTAGRAM}}" role="button"><i class="fab fa-instagram"></i></i></a>
+            {% endif %}
+            {% if LINK_LINKEDIN %}
+              <a class="btn btn-circle" href="{{LINK_LINKEDIN}}" role="button"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
           </p>
         </div>
       </div>
@@ -92,6 +101,7 @@
   <!-- /Footer -->
 
   <!-- Barra de Navegación -->
+
   <nav class="navbar navbar-dark fixed-top">
     <div class="container">
       <div class="container">
@@ -115,13 +125,13 @@
           <div class="p-4">
             <ul class="navbar-nav ml-auto ftmtabla">
               <li class="nav-item">
-                <a class="nav-link text-center" href="index.html">Proyectos</a>
+                <a class="nav-link text-center" href="{% url 'core:index' %}">Proyectos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="nosotros.html">Nosotros</a>
+                <a class="nav-link text-center" href="{% url 'services:nosotros' %}">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="contacto.html">Contacto</a>
+                <a class="nav-link text-center" href="{% url 'core:contact' %}">Contacto</a>
               </li>
             </ul>
           </div>

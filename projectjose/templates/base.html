@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ES">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>White House Architects</title>
+
+  <!-- Bootstrap core CSS-->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+  {% block css %}
+
+  {% endblock css %}
+
+  <!-- Íconos -->
+  <script src="https://kit.fontawesome.com/f8e43163b5.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Inria+Serif:400,700|Raleway:300,400&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="ft-bodyn">
+
+  {% block navbar %}
+  {% endblock navbar %}
+
+  <br><br>
+
+  <!-- Cuerpo -->
+  {% block content %}
+  {% endblock content %}
+  <!-- /Cuerpo -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-light">
+    <div class="container"><hr>
+      <div class="row">
+        <div class="col-sm-3 ftft1" style="font-family: serif;">
+          <h4 style="font-weight: 700;">Dirección</h4>
+          <p class="ftdesc">Av. Ricardo Palma 341<br>Miraflores - Perú</p>
+        </div>
+        <div class="col-sm-3 ftft2" style="font-family: serif;">
+          <h4 style="font-weight: 700;">Contacto</h4>
+          <p class="ftdesc">(051) 977 856 116<br>proyectos@awh.pe</p>
+        </div>
+        <div class="col-sm-3 ftft3">
+        </div>
+        <div class="col-sm-3 ftft4 text-right">
+          <p class="ftsocial">
+            {% if LINK_FACEBOOK %}
+              <a class="btn btn-circle" href="{{LINK_FACEBOOK}}" role="button"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if LINK_INSTAGRAM %}
+              <a class="btn btn-circle" href="{{LINK_INSTAGRAM}}" role="button"><i class="fab fa-instagram"></i></i></a>
+            {% endif %}
+            {% if LINK_LINKEDIN %}
+              <a class="btn btn-circle" href="{{LINK_LINKEDIN}}" role="button"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- /Footer -->
+
+  {% block navbar_footer %}
+  {% endblock navbar_footer %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

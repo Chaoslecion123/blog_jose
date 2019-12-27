@@ -1,0 +1,17 @@
+<div class="card-body pa-0 table-prodabre__wrapper">
+    <div class="table-prodabre__wrapper-scroller">
+        <table class="table table-prodabre table-hover">
+            <thead class="bg-light">
+                {% block headers %}{% endblock headers %}
+            </thead>
+            <tbody>
+                {% block rows %}{% endblock rows %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% if not hide_pagination %}
+    <div class="card-footer align-right">
+        {% comment %} {% include './_pagination.html' %} {% endcomment %}
+    </div>
+{% endif %}

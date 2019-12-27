@@ -1,0 +1,22 @@
+{% extends './add.html' %}
+{% load static %}
+
+{% block view_header_title %}
+    Editar Personal: {{ object.title }}
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:staff-list' %}" class="breadcrumb-link">
+            Personales
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:staff-detail' pk=object.pk %}" class="breadcrumb-link">
+            {{ object.username }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        Editar
+    </li>
+{% endblock view_breadcrumb_items %}

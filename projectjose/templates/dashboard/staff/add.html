@@ -1,0 +1,69 @@
+{% extends './list.html' %}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block view_header_back %}
+    {% url 'dashboard:staff-list' as btn_target %}
+    {% include 'dashboard/_widgets/_button_return.html' %}
+{% endblock view_header_back %}
+
+{% block view_header_title %}
+    Nuevo Personal
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:staff-list' %}" class="breadcrumb-link">
+            Personales
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        Nuevo
+    </li>
+{% endblock view_breadcrumb_items %}
+
+{% block view_content %}
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card prodabre-card">
+                {% with form_name="form" %}
+                    {% include 'dashboard/_widgets/_form_grouped.html' %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+{% endblock view_content %}
+
+{% block core_js %}
+{{ block.super }}
+<script src="{% static 'administrador/js/slugify.js' %}"></script>
+{% endblock core_js %}
+
+{% block custom_js %}
+    <script>
+        $(document).ready(function () {
+            var oldNameSlug = Slugify($('#id_name').val());
+
+            $('#id_name:input').on('propertychange input', function (e) {
+                var valueChanged = false;
+
+                if (e.type=='propertychange') {
+                    valueChanged = e.originalEvent.propertyName=='value';
+                } else {
+                    valueChanged = true;
+                }
+                if (valueChanged) {
+                    var name = $('#id_name').val();
+                    var nameSlug = Slugify(name);
+                    var slug = $('#id_slug').val();
+
+                    if (slug === '' || slug === oldNameSlug) {
+                        $('#id_slug').val(nameSlug);
+                        oldNameSlug = nameSlug;
+                    }
+                }
+            });
+        })
+    </script>
+{% endblock custom_js %}

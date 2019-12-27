@@ -26,9 +26,16 @@ CACHES = {
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG  # NOQA
 
 # Email
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+# EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+from decouple import config
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'lfsoverop@unac.edu.pe'
+EMAIL_HOST_PASSWORD = config('USER_EMAIL_PASSWORD') #ENV
+EMAIL_USE_TLS = True
 
 # django-extensions
 INSTALLED_APPS += ['django_extensions']  # noqa F405

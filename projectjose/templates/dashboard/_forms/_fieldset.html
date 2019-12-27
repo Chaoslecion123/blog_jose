@@ -1,0 +1,16 @@
+<fieldset {% if fieldset.css_id %}id="{{ fieldset.css_id }}"{% endif %}
+    {% if fieldset.css_class or form_style %}class="{{ fieldset.css_class }} {{ form_style }}"{% endif %}
+    {{ fieldset.flat_attrs|safe }}>
+    {% if legend %}
+        <div class="card-header bg-light border-top">
+            {{ legend|safe }}
+        </div>
+    {% endif %}
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                {{ fields|safe }}
+            </div>
+        </div>
+    </div>
+</fieldset>

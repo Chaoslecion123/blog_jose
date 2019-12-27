@@ -1,0 +1,26 @@
+<div id="{{ modal_id|default:'delete-modal' }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{% block title %}{% endblock title %}</h4>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-fw fa-times"></i>
+                </a>
+            </div>
+            <div class="modal-body">
+                <form id="id_{{ modal_id|default:'delete-modal' }}-form" name="{{ modal_id|default:'delete-modal' }}-form" action="" method="post">
+                    {% block notice %}<strong id="{{ modal_id|default:'delete-modal' }}-prompt" style="text-transform: capitalize;"></strong>{% endblock notice %}
+                    {% csrf_token %}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="id_{{ modal_id|default:'delete-modal' }}-form" class="btn btn-outline-danger" title="Si">
+                    <strong>{{ confirm_text|default:"Eliminar" }}</strong>
+                </button>
+                <a href="#" class="btn btn-primary" data-dismiss="modal">
+                    <strong>{{ discard_text|default:"Conservar" }}</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

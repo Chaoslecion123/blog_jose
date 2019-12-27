@@ -1,0 +1,41 @@
+{% load static %}
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-light fixed-top">
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div id="navpos1" class="col">
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+              <span> </span>
+              <span> </span>
+              <span> </span>
+            </button>
+          </div>
+          <div id="navpos2" class="col text-center">
+          <a class="navbar-brand mx-auto" href="{% url 'core:index' %}"><img src="{% static 'img/brandb.png' %}" class="responsive" style="max-height: 40px;width: auto;"/></a>
+          </div>
+          <div id="navpos3" class="col text-right">
+          </div>
+        </div>
+      </div>
+      <div class="pos-f-t ftmenu">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="p-4">
+            <ul class="navbar-nav ml-auto ftmtabla">
+              <li class="nav-item">
+                <a class="nav-link text-center" href="{% url 'core:index' %}">Proyectos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="{% url 'services:nosotros' %}">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="{% url 'core:contact' %}">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+  <!-- /Barra de Navegación -->

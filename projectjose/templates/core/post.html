@@ -63,20 +63,23 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <p class="ft-posth1p">Proyecto</p>
-          <h1 class="ft-posth1 text-uppercase">Sodimac Home Center</h1>
+          <h1 class="ft-posth1 text-uppercase">{{object.title}}</h1>
         </div>
       </div>
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div>
-            <img class="img-fluid ft-post-img" src="{% static 'img/p07.png' %}">
+            {% for image_ in object.images.all %}
+              {% if forloop.first %}
+              <img class="img-fluid ft-post-img" src="{{image_.image.url}}">
+              {% endif %}
+            {% endfor %}
+
           </div>
         </div>
         <div class="col-lg-5">
-          <p class="ft-postp">INTRODUCCIÓN</p>
-          <p class="ft-postp">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and</p>
-          <p class="ft-postp">going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-          <p class="ft-postp">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p class="ft-postp">{{object.subtitle}}</p>
+          <p class="ft-postp">{{object.content}}</p>
         </div>
       </div>
     </div>
@@ -87,40 +90,21 @@
   <div style="background-color:#EFEFEF">
     <div class="container container-fluid ft-postgal">
       <div class="row align-items-center flex-nowrap flex-row">
+      {% for image_ in object.images.all  %}
+        {% if forloop.counter > 1 %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card card-block">
-            <img src="{% static 'img/p01.png' %}"><hr>
-            <p class="ft-postp">INTERIORES</p>
+            <img src="{{image_.image.url}}"><hr>
+            <p class="ft-postp">{{image_.alt}}</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card card-block">
-            <img src="{% static 'img/p02.png' %}"><hr>
-            <p class="ft-postp">SALA</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card card-block">
-            <img src="{% static 'img/p03.png' %}"><hr>
-            <p class="ft-postp">COMEDOR</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card card-block">
-            <img src="{% static 'img/p04.png' %}"><hr>
-            <p class="ft-postp">BAÑO</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card card-block">
-            <img src="{% static 'img/p05.png' %}"><hr>
-            <p class="ft-postp">DORMITORIO</p>
-          </div>
-        </div>
+        {% endif  %}
+      {% endfor %}
       </div>
     </div>
   </div>
   <!-- /Galería Inferior -->
+
 
   <!-- Footer -->
   <footer class="py-5 bg-light">
@@ -138,9 +122,15 @@
         </div>
         <div class="col-sm-3 ftft4 text-right">
           <p class="ftsocial">
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-instagram"></i></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-linkedin-in"></i></a>
+            {% if LINK_FACEBOOK %}
+              <a class="btn btn-circle" href="{{LINK_FACEBOOK}}" role="button"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if LINK_INSTAGRAM %}
+              <a class="btn btn-circle" href="{{LINK_INSTAGRAM}}" role="button"><i class="fab fa-instagram"></i></i></a>
+            {% endif %}
+            {% if LINK_LINKEDIN %}
+              <a class="btn btn-circle" href="{{LINK_LINKEDIN}}" role="button"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
           </p>
         </div>
       </div>

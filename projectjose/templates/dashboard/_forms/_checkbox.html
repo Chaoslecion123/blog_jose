@@ -1,0 +1,23 @@
+{% load crispy_forms_field %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    <div class="form-group{% if 'form-horizontal' in form_class %} row{% endif %} py-0">
+        {% if label_class %}
+            <div class="{% for offset in bootstrap_checkbox_offsets %}{{ offset }} {% endfor %}{{ field_class }}">
+        {% endif %}
+            <{% if tag %}{{ tag }}{% else %}div{% endif %} id="div_{{ field.auto_id }}" class="px-0 {% if not field|is_checkbox %}form-group{% if 'form-horizontal' in form_class %} row{% endif %}{% else %}form-check{% endif %}{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+                <div class="custom-control custom-checkbox {% if field.errors %}is-invalid{% endif %}">
+                    {% crispy_field field 'class' 'custom-control-input' %}
+                    <label for="{{ field.id_for_label }}" class="custom-control-label{% if field.field.required %} requiredField{% endif %}">
+                        {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+                    </label>
+                </div>
+                {% include 'bootstrap4/layout/help_text_and_errors.html' %}
+            </{% if tag %}{{ tag }}{% else %}div{% endif %}>
+        {% if label_class %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

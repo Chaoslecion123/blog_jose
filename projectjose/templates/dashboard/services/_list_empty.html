@@ -1,0 +1,8 @@
+{% extends 'dashboard/_widgets/_list_empty.html' %}
+
+{% block title %}No se ha registrado ningún proyecto aún.{% endblock title %}
+
+{% block action %}
+    {% url 'dashboard:post-add' as btn_target %}
+    {% include 'dashboard/_widgets/_button_new.html' with btn_text='Nuevo' %}
+{% endblock action %}

@@ -1,0 +1,12 @@
+{% extends 'dashboard/_widgets/_delete_modal.html' %}
+
+{% block title %}
+Eliminar Imagen
+{% endblock title %}
+
+{% block notice %}
+¿Estás seguro de querer eliminar este atributo?
+<div>
+{{ block.super }}
+</div>
+{% endblock notice %}

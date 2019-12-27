@@ -1,0 +1,20 @@
+<div class="card-body">
+    <div class="card-columns">
+        {% for image in image_list %}
+            <div class="card shadow-none border">
+                <img src="{{ image.image.url }}" alt="{{ image.alt|default:object.title }}" style="width:100%;">
+                <div class="card-body border-top">
+                    <p class="card-text">{{ image.alt|default:object.title }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:post-image-edit' pk=object.pk image_pk=image.pk %}">
+                        <i class="fas fa-fw fa-edit text-warning" title="Editar"></i>
+                    </a>
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:post-image-delete' pk=object.pk image_pk=image.pk %}" data-toggle="modal" data-target="#delete-modal-image">
+                        <i class="fas fa-fw fa-trash-alt text-danger" title="Eliminar"></i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

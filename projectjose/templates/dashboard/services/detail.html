@@ -1,0 +1,106 @@
+{% extends './list.html' %}
+{% load static %}
+
+{% block view_header_back %}
+    {% url 'dashboard:service-list' as btn_target %}
+    {% include 'dashboard/_widgets/_button_return.html' %}
+{% endblock view_header_back %}
+
+{% block view_header_title %}
+    Servicio: {{ object.title }}
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item" aria-current="page">
+        <a href="{% url 'dashboard:service-list' %}" class="breadcrumb-link">
+            Servicios
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        {{ object.title }}
+    </li>
+{% endblock view_breadcrumb_items %}
+
+{% block view_content %}
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card prodabre-card">
+                <div class="card-header bg-light">
+                    Detalles
+                </div>
+                <div class="card-body">
+                    <h2 class="m-0">{{ object.title }}</h2>
+                    <h4 class="mt-3"><img src="{{object.icon.url}}" alt=""></h4>
+                    <dl class="m-0">
+                        <dt>Contenido</dt>
+                        <dd class="pl-3">{{ object.content }}</dd>
+                    </dl>
+                    <h4 class="mt-3"><img src="{{object.image.url}}" alt="" style="width:30%;"></h4>
+                </div>
+                <div class="card-footer">
+                    {% url 'dashboard:service-edit' pk=object.pk as btn_target %}
+                    {% include 'dashboard/_widgets/_button_edit.html' %}
+
+                    {% if object.is_deletable %}
+                        {% url 'dashboard:product-delete' pk=object.pk as btn_target %}
+                        {% with btn_attrs='data-toggle="modal" data-target="#delete-modal-product"' btn_data_label=object.name %}
+                            {% include 'dashboard/_widgets/_button_delete.html' %}
+                        {% endwith %}
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="card prodabre-card">
+                <div class="card-header bg-light">
+                    Atributos
+                    {% if object.attributes.all %}
+                        <div class="card-header__action">
+                            {% url 'dashboard:service-attribute-add' pk=object.pk as btn_target %}
+                            {% with small=True  %}
+                                {% include 'dashboard/_widgets/_button_new.html' %}
+                            {% endwith %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% with atribute_list=object.attributes.all  %}
+                    {% if atribute_list %}
+                        {% url 'dashboard:service-detail' as btn_target %}
+                        {% with hide_pagination=True %}
+                          {% include './attribute/_list_alt.html' %}
+                        {% endwith %}
+                    {% else %}
+                        {% with without_wrapper=True  %}
+                          {% include './attribute/_list_empty.html' %}
+                        {% endwith %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+
+    </div>
+    {% include 'dashboard/_widgets/_messages.html' %}
+    {% comment %} {% with modal_id="delete-modal-component"  %}
+        {% include './component/_delete_modal.html' %}
+    {% endwith %} {% endcomment %}
+    {% comment %} {% with modal_id="delete-modal-attribute"  %}
+        {% include './attribute/_delete_modal.html' %}
+    {% endwith %} {% endcomment %}
+    {% with modal_id="delete-modal-attribute"  %}
+        {% include './attribute/_delete_modal.html' %}
+    {% endwith %}
+    {% with modal_id="delete-modal-product"  %}
+        {% include './_delete_modal.html' %}
+    {% endwith %}
+{% endblock view_content %}
+
+{% block custom_js %}
+  <script>
+      $(document).ready(function(){
+          {% include 'dashboard/_widgets/_list_action_go.js' %}
+          {% include 'dashboard/_widgets/_messages.js' %}
+          {% include 'dashboard/_widgets/_delete_modal.js' %}
+      });
+  </script>
+{% endblock %}

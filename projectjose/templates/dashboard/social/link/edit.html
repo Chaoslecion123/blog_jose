@@ -1,0 +1,22 @@
+{% extends './add.html' %}
+{% load static %}
+
+{% block view_header_title %}
+    Editar Red Social: {{ object.name }}
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:link-list' %}" class="breadcrumb-link">
+            Redes Sociales
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:link-detail' pk=object.pk %}" class="breadcrumb-link">
+            {{ object.username }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        Editar
+    </li>
+{% endblock view_breadcrumb_items %}

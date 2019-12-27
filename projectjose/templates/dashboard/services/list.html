@@ -1,0 +1,73 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block menu_class__service %}active{% endblock menu_class__service %}
+
+
+{% block view_header_back %}
+    {% comment %} {% url 'dashboard:home' as btn_target %}
+    {% include 'prodabre/_widgets/_button_return.html' %} {% endcomment %}
+{% endblock view_header_back %}
+
+{% block view_header_title %}
+    Servicios
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item active" aria-current="page">
+        Servicios
+    </li>
+{% endblock view_breadcrumb_items %}
+
+{% block view_content %}
+    <div class="row">
+        {% if object_list or is_searching or is_filtering %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                <div class="card prodabre-card">
+                    <div class="card-header bg-light">
+                        Servicios
+                        <div class="card-header__action">
+                            {% url 'dashboard:service-add' as btn_target %}
+                            {% include 'dashboard/_widgets/_button_new.html' with btn_classes="btn-xs ml-2 py-1 px-2" %}
+
+                            {% comment %} {% url 'dashboard:product-export' as btn_target %}
+                            {% include 'prodabre/_widgets/_button_export.html' with btn_classes="btn-xs ml-2 py-1 px-2" %} {% endcomment %}
+                        </div>
+                    </div>
+                    {% if object_list %}
+                        {% if is_searching or is_filtering %}
+                            {% with count=search_results_count  %}
+                                {% include './_search_count.html' %}
+                            {% endwith %}
+                        {% endif %}
+                        {% url 'dashboard:post-list' as btn_target %}
+                        {% include './_list.html' %}
+                    {% else %}
+                        {% include './_search_empty.html' %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                {% comment %} {% url 'dashboard:product-list' as target %}
+                {% include 'prodabre/_widgets/_filters.html' %} {% endcomment %}
+            </div>
+        {% else %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {% include './_list_empty.html' %}
+            </div>
+        {% endif %}
+    </div>
+    {% include 'dashboard/_widgets/_messages.html' %}
+    {% include './_delete_modal.html' with modal_id='delete-modal' %}
+{% endblock view_content %}
+
+{% block custom_js %}
+    <script>
+        $(document).ready(function(){
+            {% include 'dashboard/_widgets/_list_action_go.js' %}
+            {% include 'dashboard/_widgets/_messages.js' %}
+            {% include 'dashboard/_widgets/_delete_modal.js' %}
+        });
+    </script>
+{% endblock custom_js %}

@@ -1,0 +1,22 @@
+{% extends './add.html' %}
+{% load static %}
+
+{% block view_header_title %}
+    Editar Servicio: {{ object.title }}
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:service-list' %}" class="breadcrumb-link">
+            Servicios
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'dashboard:service-detail' pk=object.pk %}" class="breadcrumb-link">
+            {{ object.title }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+        Editar
+    </li>
+{% endblock view_breadcrumb_items %}

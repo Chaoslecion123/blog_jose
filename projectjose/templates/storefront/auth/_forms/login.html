@@ -1,0 +1,39 @@
+<form action="{% url 'dashboard:login' %}" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="form-group">
+            <ul class="parsley-errors-list filled">
+            {% for messsage in form.non_field_errors %}
+                <li>{{ messsage }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <input class="form-control form-control-lg" id="username" name="username" type="text" placeholder="Username" autocomplete="off">
+        {% if form.errors.username %}
+            <div class="form-group">
+                <ul class="parsley-errors-list filled">
+                {% for messsage in form.errors.username %}
+                    <li>{{ messsage }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <input class="form-control form-control-lg" id="password" name="password" type="password" placeholder="Contraseña" autocomplete="off">
+        {% if form.errors.password %}
+            <div class="form-group">
+                <ul class="parsley-errors-list filled">
+                {% for messsage in form.errors.password %}
+                    <li>{{ messsage }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    {% url 'dashboard:staff-list' as redirect %}
+    <input type="hidden" name="{{ REDIRECT_FIELD_NAME|default:'next' }}" value="{{ REDIRECT_FIELD_VALUE|default:redirect }}"/>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
+</form>

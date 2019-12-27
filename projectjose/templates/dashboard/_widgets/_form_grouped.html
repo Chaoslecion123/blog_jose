@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load static %}
+
+<form id="id_{{ form_name }}" name="{{ form_name }}" class="form-horizontal" action="" method="{{ form_method|default:'post' }}"{% if multipart %} enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    <div class="card-body p-0">
+    {% block forms %}
+        {% crispy form %}
+    {% endblock forms %}
+    </div>
+    {% if not hide_buttons %}
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 text-left text-md-right"></div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4">
+                {% include './_button_save.html' %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</form>

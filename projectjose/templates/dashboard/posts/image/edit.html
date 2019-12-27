@@ -1,0 +1,27 @@
+{% extends './add.html' %}
+{% load static %}
+
+{% block view_header_title %}
+    Editar imagen
+{% endblock view_header_title %}
+
+{% block view_breadcrumb_items %}
+<li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'dashboard:post-list' %}" class="breadcrumb-link">
+        Proyecto
+    </a>
+</li>
+<li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'dashboard:post-detail' pk=post.pk %}" class="breadcrumb-link">
+        {{ post.title }}
+    </a>
+</li>
+<li class="breadcrumb-item" aria-current="page">
+    <a href="{% url 'dashboard:post-detail' pk=post.pk %}" class="breadcrumb-link">
+        Imagen
+    </a>
+</li>
+<li class="breadcrumb-item active" aria-current="page">
+    Editar
+</li>
+{% endblock view_breadcrumb_items %}

@@ -74,13 +74,21 @@ EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[Comparte Rid
 # Admin
 ADMIN_URL = env('DJANGO_ADMIN_URL')
 
+from decouple import config
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'lfsoverop@unac.edu.pe'
+EMAIL_HOST_PASSWORD = config('USER_EMAIL_PASSWORD') #ENV
+EMAIL_USE_TLS = True
+
 # Anymail (Mailgun)
 # INSTALLED_APPS += ['anymail']  # noqa F405
 # EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 # ANYMAIL = {
 #     'MAILGUN_API_KEY': env('MAILGUN_API_KEY'),
 #     'MAILGUN_SENDER_DOMAIN': env('MAILGUN_DOMAIN')
-# }
+#
 
 # Gunicorn
 INSTALLED_APPS += ['gunicorn']  # noqa F405

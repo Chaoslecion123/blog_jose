@@ -1,0 +1,9 @@
+{% extends 'dashboard/_widgets/_delete_modal.html' %}
+
+{% block title %}
+Eliminar atributo de producto
+{% endblock title %}
+
+{% block notice %}
+¿Estás seguro de querer eliminar el atributo de producto "{{ block.super }}"?
+{% endblock notice %}

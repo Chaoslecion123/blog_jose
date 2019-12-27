@@ -1,76 +1,59 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ES">
+{% block navbar %}
+  {% include 'snippets/navbar.html' %}
+{% endblock navbar %}
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>White House Architects</title>
-
-  <!-- Bootstrap core CSS-->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-  <!-- CSS -->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-
-  <!-- Íconos -->
-  <script src="https://kit.fontawesome.com/f8e43163b5.js" crossorigin="anonymous"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Inria+Serif:400,700|Raleway:300,400&display=swap" rel="stylesheet">
-
-</head>
-
-<body class="ft-bodyn">
-
-  <!-- Barra de Navegación -->
-  <nav class="navbar navbar-light fixed-top">
-    <div class="container">
-      <div class="container">
-        <div class="row">
-          <div id="navpos1" class="col">
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
-              <span> </span>
-              <span> </span>
-              <span> </span>
-            </button>
-          </div>
-          <div id="navpos2" class="col text-center">
-          <a class="navbar-brand mx-auto" href="index.html"><img src="{% static 'img/brandb.png' %}" class="responsive" style="max-height: 40px;width: auto;"/></a>
-          </div>
-          <div id="navpos3" class="col text-right">
-          </div>
-        </div>
-      </div>
-      <div class="pos-f-t ftmenu">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="p-4">
-            <ul class="navbar-nav ml-auto ftmtabla">
-              <li class="nav-item">
-                <a class="nav-link text-center" href="index.html">Proyectos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center" href="nosotros.html">Nosotros</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center" href="contacto.html">Contacto</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <!-- /Barra de Navegación -->
-
-  <br><br>
-
+{% block content %}
   <!-- Cuerpo -->
-  <div>
+  {% for service in services  %}
+    {%  if not forloop.counter|divisibleby:"2" %}
+      <div>
+        <div class="container ft-contserv">
+          <div class="row align-items-center">
+            <div id="ft-oser1" class="col-lg-1"></div>
+            <div id="ft-oser2" class="col-lg-5">
+              <img class="img-fluid mb-4 mb-lg-0" src="{{service.image.url}}">
+            </div>
+            <div id="ft-oser3" class="col-lg-4">
+              <h1 class="ft-tserv"><img src="{{service.icon.url}}" class="ft-icon"></img>{{service.title}}</h1>
+              <p class="ft-pserv">{{service.content}}</p>
+              <hr>
+              <p class="ft-pserv tags text-uppercase">
+                {% for attribute in service.attributes.all  %}
+                  {{attribute}} {% if not forloop.last %}  /  {% endif %}
+                {% endfor %}
+              </p>
+              <hr><br>
+              <a class="ft-linkbt" href="{% url 'core:contact' %}">Solicitar más información</a>
+            </div>
+            <div id="ft-oser4" class="col-lg-1"></div>
+            <div id="ft-oser5" class="col-lg-1"></div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div style="background-color: #FAFAFA">
+        <div class="container ft-contserv">
+          <div class="row align-items-center">
+            <div id="ft-oser1" class="col-lg-1"></div>
+            <div id="ft-oser3" class="col-lg-4">
+              <h1 class="ft-tserv"><img src="{{service.icon.url}}" class="ft-icon"></img>{{service.title}}</h1>
+              <p class="ft-pserv">{{service.content}}</p><br>
+              <a class="ft-linkbt" href="{% url 'core:contact' %}">Solicitar más información</a>
+            </div>
+            <div id="ft-oser4" class="col-lg-1"></div>
+            <div id="ft-oser2" class="col-lg-5">
+              <img class="img-fluid mb-4 mb-lg-0" src="{{service.image.url}}">
+            </div>
+            <div id="ft-oser5" class="col-lg-1"></div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} <div>
     <div class="container ft-contserv">
       <div class="row align-items-center">
         <div id="ft-oser1" class="col-lg-1"></div>
@@ -89,9 +72,9 @@
         <div id="ft-oser5" class="col-lg-1"></div>
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
 
-  <div style="background-color: #FAFAFA">
+  {% comment %} <div style="background-color: #FAFAFA">
     <div class="container ft-contserv">
       <div class="row align-items-center">
         <div id="ft-oser1" class="col-lg-1"></div>
@@ -146,39 +129,7 @@
         <div id="ft-oser5" class="col-lg-1"></div>
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
   <!-- /Cuerpo -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-light">
-    <div class="container"><hr>
-      <div class="row">
-        <div class="col-sm-3 ftft1" style="font-family: serif;">
-          <h4 style="font-weight: 700;">Dirección</h4>
-          <p class="ftdesc">Av. Ricardo Palma 341<br>Miraflores - Perú</p>
-        </div>
-        <div class="col-sm-3 ftft2" style="font-family: serif;">
-          <h4 style="font-weight: 700;">Contacto</h4>
-          <p class="ftdesc">(051) 977 856 116<br>proyectos@awh.pe</p>
-        </div>
-        <div class="col-sm-3 ftft3">
-        </div>
-        <div class="col-sm-3 ftft4 text-right">
-          <p class="ftsocial">
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-instagram"></i></i></a>
-            <a class="btn btn-circle" href="#" role="button"><i class="fab fa-linkedin-in"></i></a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- /Footer -->
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock content %}

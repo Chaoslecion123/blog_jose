@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+    {% comment %}
+    # Required meta tags #######################################################
+    {% endcomment %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block meta %}
+    {% endblock meta %}
+
+    {% comment %}
+    # Title ####################################################################
+    {% endcomment %}
+    <title>{% block title %}White House{% endblock title %}</title>
+
+    {% comment %}
+    # CSS ######################################################################
+    {% endcomment %}
+    {% block vendors_css %}
+    {% endblock vendors_css %}
+
+    {% block core_css %}
+    {% endblock core_css %}
+
+    {% block custom_css %}
+    {% endblock custom_css %}
+</head>
+
+<body class="page-wrapper">
+    {% block content %}
+    {% endblock content %}
+
+    {% block vendors_js %}
+    {% endblock vendors_js %}
+
+    {% block core_js %}
+    {% endblock core_js %}
+
+    {% block custom_js %}
+    {% endblock custom_js %}
+</body>
+
+</html>

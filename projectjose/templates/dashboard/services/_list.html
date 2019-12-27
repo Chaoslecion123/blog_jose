@@ -1,0 +1,33 @@
+{% extends 'dashboard/_widgets/_list_scrolable.html' %}
+
+{% block headers %}
+    <tr class="bg-light">
+        <th>Titulo</th>
+        <th>Fecha de creación</th>
+        <th>Fecha de actualización</th>
+        <th class="table-prodabre__wide-cell"></th>
+        <th class="text-center bg-light table-prodabre__sticky-cell">Acciones</th>
+    </tr>
+{% endblock headers %}
+
+{% block rows %}
+    {% for object in object_list %}
+        <tr class="table-prodabre__routable-row"  data-action-go="{% url 'dashboard:service-detail' pk=object.pk %}">
+            <td>{{ object.title }}</td>
+            <td>{{ object.created }}</td>
+            <td>{{ object.updated }}</td>
+            <td class="table-prodabre__wide-cell"></td>
+            <td class="text-center table-prodabre__sticky-cell ignore-link">
+                {% spaceless %}
+                    {% url 'dashboard:service-detail' pk=object.pk as btn_target %}
+                    {% include 'dashboard/_widgets/_button.html' with btn_icon='eye' btn_type="success" btn_classes='btn-outline-success text-success py-1 px-2' %}
+                    {% url 'dashboard:service-edit' pk=object.pk as btn_target %}
+                    {% include 'dashboard/_widgets/_button.html' with btn_icon='edit' btn_type="warning" btn_classes='btn-outline-warning text-warning py-1 px-2' %}
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:post-delete' pk=object.pk %}" data-toggle="modal" data-target="#delete-modal">
+                        <i class="fas fa-fw fa-trash-alt text-danger" title="Eliminar"></i>
+                    </a>
+                {% endspaceless %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock rows %}

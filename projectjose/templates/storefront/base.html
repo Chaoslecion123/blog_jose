@@ -1,0 +1,192 @@
+{% extends 'dashboard/base_0.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }}
+{% endblock title %}
+
+{% block vendors_css %}
+    <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/circular-std/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
+{% endblock vendors_css %}
+
+{% block core_css %}
+    <link rel="stylesheet" href="{% static 'administrador/css/style.css' %}">
+{% endblock core_css %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'storefront/css/custom.css' %}">
+    <style>
+        .dashboard-main-wrapper {
+            padding-top: 72px;
+        }
+
+        .dashboard-wrapper {
+            height: calc(100vh - 72px);
+            margin-left: auto;
+        }
+        .sub-line{
+        }
+        .sub-line:hover{
+            border-bottom: 2px solid #3e88ef;
+        }
+    </style>
+{% endblock custom_css %}
+
+{% block content %}
+    <div class="dashboard-main-wrapper">
+        {% block view %}
+            <div class="dashboard-header">
+                <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                    <a class="navbar-brand " href="#">
+                        <img src="{% static 'img/brandb.png' %}" alt="White House" style="height:45px;">
+                    </a>
+                    <div class="d-flex justify-content-end">
+                    {% comment %} <div class="text-right-shop2 mt-3">
+                        <a href="{% url 'storefront:storefront-product-cart' %}"><i class="fa fa-lg fa-2x fa-shopping-cart"></i>
+                            <span class="badge2 {% if not checkout_counter %}empty{% endif%}">
+                                <strong>{{request.COOKIES.count_product}}</strong>
+                            </span>
+                        </a>
+                    </div> {% endcomment %}
+                    <button class="navbar-toggler mr-3 mt-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto navbar-right-top">
+                            {% if user.is_staff %}
+                                <div class="nav-user-info d-sm-none">
+                                    <h5 class="mb-0 text-white nav-user-name">
+                                        {{ request.user.get_full_name }}
+                                    </h5>
+                                </div>
+                                <a class="dropdown-item" href="{% url 'storefront:user-detail' %}">
+                                    <i class="fas fa-user mr-1"></i>Mi cuenta
+                                </a>
+                            {%  endif %}
+                            <li class="nav-item pr-2 pl-2 ">
+                                <a class="nav-link sub-line pb-1" href="{% url 'storefront:storefront-product-list' %}">
+                                   Productos
+                                </a>
+                            </li>
+                            <li class="nav-item pr-2 pl-2">
+                                <a class="nav-link sub-line pb-1" href="{% url 'storefront:about' %}">
+                                    Nosotros
+                                </a>
+                            </li>
+                            <li class="nav-item pr-2 pl-2 ">
+                                <a class="nav-link sub-line pb-1" href="{% url 'storefront:testimony' %}">
+                                    Testimonios
+                                </a>
+                            </li>
+                            {% comment %}
+                                <li class="shop">
+                                    <div class="mt-4 ml-3 mr-3 nav-item pr-2 pl-2">
+                                        <div class="text-right-shop">
+                                            <a  href="{% url 'storefront:storefront-product-cart' %}"><i class="fa fa-lg fa-2x fa-shopping-cart" ></i>
+                                            </a>
+                                            <span class="badge {% if not checkout_counter %}empty{% endif%}">
+                                            <strong>{{request.COOKIES.count_product|default:'0'}}</strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endcomment %}
+                            {% if user.is_authenticated %}
+                                {% if user.is_staff %}
+                                    <li class="nav-item">
+                                        <span class="nav-link" href="#">
+                                            <a class="btn btn-success" href="{% url 'dashboard:home' %}">
+                                                Panel de control
+                                            </a>
+                                        </span>
+                                    </li>
+                                    <div>
+                                        {% comment %} <div class="nav-user-info">
+                                            <h5 class="mb-0 text-white nav-user-name">
+                                                {{ request.user.get_full_name }}
+                                            </h5>
+                                        </div>
+                                        <a class="dropdown-item" href="{% url 'storefront:user-detail' %}">
+                                            <i class="fas fa-user mr-1"></i>Mi cuenta
+                                        </a> {% endcomment %}
+                                        <a class="dropdown-item" href="{% url 'storefront:logout' %}">
+                                            <i class="fas fa-power-off mr-1"></i>Salir
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                <li class="nav-item dropdown nav-user" {% if user.is_impersonate %}style="background-color:#ffc107"{% endif %}>
+                                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {% with request.user as user %}
+                                            <img src="{% if user.picture %}{{ user.picture.url }}{% else %}{% static 'prodabre/img/placeholder-user.png' %}{% endif %}" alt="Foto de perfil" class="user-avatar-md rounded-circle">
+                                        {% endwith %}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                                        aria-labelledby="navbarDropdownMenuLink2">
+                                        <div class="nav-user-info">
+                                            <h5 class="mb-0 text-white nav-user-name">
+                                                {{ request.user.get_full_name }}
+                                            </h5>
+                                        </div>
+                                        <a class="dropdown-item" href="{% url 'storefront:user-detail' %}">
+                                            <i class="fas fa-user mr-1"></i>Mi cuenta
+                                        </a>
+                                        {% if user.is_impersonate %}
+                                            <a class="dropdown-item" href="{% url 'impersonate-stop' %}" style="background-color:#ffc107">
+                                                <i class="fas fa-power-off mr-1"></i>Finalizar imitación
+                                            </a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="{% url 'storefront:logout' %}">
+                                                <i class="fas fa-power-off mr-1"></i>Salir
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <span class="nav-link" href="#">
+                                        <a class="btn btn-primary" href="{% url 'storefront:login' %}">
+                                            Ingresar
+                                        </a>
+                                    </span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="dashboard-wrapper {% block view_wrapper_class %}{% endblock view_wrapper_class %}">
+                <div class="container-fluid dashboard-content {% block view_content_wrapper_class %}{% endblock view_content_wrapper_class %}">
+                    {% block view_content %}
+                    {% endblock view_content %}
+                </div>
+
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                Copyright © 2019 Productos Angel Breña. Todos los derechos reservados.
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right d-none d-sm-block">
+                                    Desarrollado por
+                                    <a href="https://softbutterfly.io" target="_blank" class="text-primary">Soft<strong class="text-danger">Butterfly</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock view %}
+    </div>
+{% endblock content %}
+
+{% block vendors_js %}
+    <script src="{% static 'prodabre/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'prodabre/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% endblock vendors_js %}

@@ -1,0 +1,277 @@
+{% extends 'dashboard/base_0.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} - Panel de administración{% endblock title %}
+
+{% block vendors_css %}
+  <link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
+  <link href="{% static 'assets/vendorsito/fonts/circular-std/style.css" rel="stylesheet' %}">
+  <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
+{% endblock vendors_css %}
+
+{% block core_css %}
+    <link rel="stylesheet" href="{% static 'administrador/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'administrador/dashboard/css/custom.css' %}">
+{% endblock core_css %}
+
+{% block content %}
+    <div class="page dashboard-page">
+        {% comment %}
+        # * Navbar ------------------------------------------------------------>
+        {% endcomment %}
+
+
+        {% block header %}
+            <header class="dashboard-header">
+                <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                    <div class="navbar-brand">
+                        <button class="btn dashboard-sidebar-toggler px-2 mr-2 d-inline">
+                            <i class="fas fa-fw fa-lg fa-bars"></i>
+                        </button>
+                        <a  href="#">
+                            <img src="{% static 'img/brandb.png' %}" alt="White House" style="height:45px;">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto navbar-right-top">
+                            {% comment %} {% include 'prodabre/_widgets/_quick_action_toolbar.html' %} {% endcomment %}
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="navbar-nav navbar-right-top user-navbar">
+                            <li class="nav-item dropdown nav-user">
+                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img
+                                        src="{% if request.user.picture %}{{ request.user.picture.url }}{% else %}{% static 'img/placeholder-user.png' %}{% endif %}"
+                                        alt="Foto de perfil"
+                                        class="user-avatar-md rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                    <div class="nav-user-info">
+                                        <h5 class="mb-0 text-white nav-user-name">{{ request.user.username }}</h5>
+                                    </div>
+                                    <a class="dropdown-item" href="{% url 'dashboard:staff-detail' pk=request.user.pk %}">
+                                        <i class="fas fa-fw fa-user mr-2"></i>Mi cuenta
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'dashboard:staff-edit' pk=request.user.pk %}">
+                                        <i class="fas fa-fw fa-cog mr-2"></i>Editar perfil
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'dashboard:logout' %}">
+                                        <i class="fas fa-fw fa-power-off mr-2"></i>Cerrar sesión
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        {% endblock header %}
+
+
+        {% comment %}
+        # * Sidebar ----------------------------------------------------------->
+        {% endcomment %}
+
+        {% block sidebar %}
+            <aside class="dashboard-sidebar sidebar-dark">
+                <nav class="navbar">
+                    <ul class="navbar-nav flex-column">
+                        <!-- Configuracion / separador -->
+                        <li class="nav-divider">
+                            Menú
+                        </li>
+
+                        <!-- Enlace al inicio -->
+                        <li class="nav-item">
+                            <a class="nav-link {% block menu_class__home %}{% endblock %}"
+                                href="{% url 'dashboard:post-list' %}">
+                                <i class="fas fa-fw fa-home"></i>Proyectos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block menu_class__service %}{% endblock %}"
+                                href="{% url 'dashboard:service-list' %}">
+                                <i class="fas fa-fw fa-home"></i>Servicios
+                            </a>
+                        </li>
+                        <!-- Enlace al Productos y almacén -->
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link {% block warehouse_product_menu_class %}{% endblock warehouse_product_menu_class %}" href="#" data-toggle="collapse" aria-expanded="{% block warehouse_product_aria_expanded %}false{% endblock warehouse_product_aria_expanded %}" data-target="#warehouse-product--submenu" aria-controls="warehouse-product--submenu">
+                                <i class="fas fa-fw fa-warehouse"></i>Productos y Almacén
+                            </a>
+                            <div id="warehouse-product--submenu" class="collapse submenu {% block warehouse_product_submenu_class %}{% endblock warehouse_product_submenu_class %}">
+                                <ul class="nav flex-column">
+                                    {% if perms.products.manage_product %}
+                                        <li class="nav-item">
+                                            <a class="nav-link {% block product_class %}{% endblock product_class %}" href="{% url 'dashboard:product-list' %}" aria-expanded="false">
+                                                <i class=" fas fa-fw fa-window-maximize"></i>Productos
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if perms.warehouses.manage_warehouse %}
+                                        <li class="nav-item">
+                                            <a class="nav-link {% block warehouse_class %}{% endblock warehouse_class %}" href="{% url 'dashboard:warehouse-list' %}" aria-expanded="false">
+                                                <i class="fas fa-fw fa-server"></i>Almacén
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li> {% endcomment %}
+
+                        <!-- Enlace personal -->
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link {% block staff_menu_class %}{% endblock staff_menu_class %}" href="#" data-toggle="collapse" aria-expanded="{% block staff_aria_expanded %}false{% endblock staff_aria_expanded %}"
+                                data-target="#submenu--staff" aria-controls="submenu--staff">
+                                <i class="fas fa-fw fa-user-plus"></i>Personal
+                            </a>
+                            <div id="submenu--staff" class="collapse submenu {% block staff_submenu_class %}{% endblock staff_submenu_class %}">
+                                <ul class="nav flex-column">
+                                    {% if perms.staff.manage_staff %}
+                                        <li class="nav-item">
+                                            <a class="nav-link {% block staff_class %}{% endblock staff_class %}" href="{% url 'dashboard:staff-list' %}" aria-expanded="false">
+                                                <i class="fas fa-fw fa-users"></i>Personal
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    <li class="nav-item">
+                                        <a class="nav-link {% block group_class %}{% endblock group_class %}" href="{% url 'dashboard:group-list' %}" aria-expanded="false">
+                                            <i class="fas fa-fw fa-columns"></i>Grupos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> {% endcomment %}
+
+                        <!-- Configuracion / separador -->
+                        <li class="nav-divider">
+                            Configuración
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block menu_class__staff %}{% endblock %}"
+                                href="{% url 'dashboard:staff-list' %}">
+                                <i class="fas fa-fw fa-home"></i>Personal
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% block menu_class__social %}{% endblock %}"
+                                href="{% url 'dashboard:link-list' %}">
+                                <i class="fas fa-fw fa-home"></i>Redes Sociales
+                            </a>
+                        </li>
+
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link {% block geography_menu_class %}{% endblock geography_menu_class %}" href="#" data-toggle="collapse" aria-expanded="{% block geography_aria_expanded %}false{% endblock geography_aria_expanded %}" data-target="#geography--submenu" aria-controls="geography--submenu">
+                                <i class=" fas fa-fw fa-newspaper"></i>Geografía
+                            </a>
+                            <div id="geography--submenu" class="collapse submenu {% block geography_submenu_class %}{% endblock geography_submenu_class %}">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link {% block country_class %}{% endblock country_class %}" href="{% url 'dashboard:country-list' %}">
+                                            <i class="fas fa-fw fa-tag"></i>Paises
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% block country_area_class %}{% endblock country_area_class %}" href="{% url 'dashboard:country-area-list' %}">
+                                            <i class="fas fa-fw fa-tag"></i>Departamentos
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% block city_class %}{% endblock city_class %}" href="{% url 'dashboard:city-list' %}">
+                                            <i class="fas fa-fw fa-tag"></i>Provincias
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% block city_area_class %}{% endblock city_area_class %}" href="{% url 'dashboard:city-area-list' %}">
+                                            <i class="fas fa-fw fa-tag"></i>Distritos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> {% endcomment %}
+                        <!-- Enlace a los reportes -->
+                    </ul>
+                </nav>
+            </aside>
+        {% endblock sidebar %}
+
+
+
+        {% comment %}
+        # * Main content ------------------------------------------------------>
+        {% endcomment %}
+        {% block view %}
+            <main class="dashboard-main {% block view_wrapper_class %}{% endblock view_wrapper_class %}">
+                <div class="container-fluid dashboard-content">
+                    {% block view_header %}
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-header">
+                                    <div class="page-header--space-between">
+                                        <h2 class="pageheader-title">
+                                            {% block view_header_back %}{% endblock view_header_back %}
+                                            {% block view_header_title %}Dashboard{% endblock view_header_title %}
+                                        </h2>
+                                    </div>
+                                    {% block view_breadcrumb %}
+                                    <div class="page-breadcrumb">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a href="#" class="breadcrumb-link"><i class="fas fa-fw fa-home"></i> Proyectos</a>
+                                                </li>
+                                                {% block view_breadcrumb_items %}
+                                                {% endblock view_breadcrumb_items %}
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                    {% endblock view_breadcrumb %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock view_header %}
+                    {% block view_content %}
+                    {% endblock view_content %}
+                </div>
+            </main>
+        {% endblock view %}
+
+        {% comment %}
+        # * Footer ------------------------------------------------------------>
+        {% endcomment %}
+        <footer class="footer dashboard-footer">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-0">
+                        Copyright © 2019 White House. Todos los derechos reservados.
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-0">
+                        <div class="text-md-right d-none d-sm-block">
+                            Desarrollado por <a href="#" target="_blank"
+                                class="text-primary">Soft<strong class="text-danger">Fernando</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+{% endblock content %}
+
+
+
+{% block vendors_js %}
+  <script src="{% static 'assets/vendorsito/jquery/jquery-3.3.1.min.js' %}" ></script>
+  <script src="{% static 'assets/vendorsito/bootstrap/js/moment.min.js' %}" ></script>
+  <script src="{% static 'assets/vendorsito/bootstrap/js/bootstrap.bundle.min.js' %}" ></script>
+  <script src="{% static 'assets/vendorsito/bootstrap/js/bootstrap-datetimepicker.min.js' %}" ></script>
+{% endblock vendors_js %}
+
+{% block core_js %}
+  <script src="{% static 'administrador/js/core.js' %}" ></script>
+  <script src="{% static 'administrador/dashboard/js/main.js' %}"></script>
+{% endblock core_js %}
+
+{% block custom_js %}
+  <script src="{% static 'administrador/dashboard/js/home.js' %}"></script>
+{% endblock custom_js %}
