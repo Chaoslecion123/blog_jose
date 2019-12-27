@@ -795,7 +795,7 @@ position: absolute;
 /* CSS Multiselect */
 
 .ms-container {
-  background: transparent url("../img/concept/switch.png") no-repeat 50% 50%;
+  background: transparent url("../concept/switch.png") no-repeat 50% 50%;
 }
 
 .ms-container:after {
