@@ -52,15 +52,15 @@ class LinkForm(BaseForm):
                 'Red Social',
                 PrependedText(
                     'key',
-                    icon_label(icon='barcode'),
+                    #icon_label(icon='barcode'),
                 ),
                 PrependedText(
                     'name',
-                    icon_label(icon='ticket-alt'),
+                    #icon_label(icon='ticket-alt'),
                 ),
                 PrependedText(
                     'url',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
             ),
         )

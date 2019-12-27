@@ -54,19 +54,19 @@ class ServiceForm(BaseForm):
                 'Servicio',
                 PrependedText(
                     'title',
-                    icon_label(icon='barcode'),
+                    #icon_label(icon='barcode'),
                 ),
                 PrependedText(
                     'icon',
-                    icon_label(icon='ticket-alt'),
+                    #icon_label(icon='ticket-alt'),
                 ),
                 PrependedText(
                     'content',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
                 PrependedText(
                     'image',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
             ),
         )

@@ -66,19 +66,19 @@ class StaffForm(BaseForm):
                 'Personal',
                 PrependedText(
                     'username',
-                    icon_label(icon='barcode'),
+                    #icon_label(icon='barcode'),
                 ),
                 PrependedText(
                     'email',
-                    icon_label(icon='ticket-alt'),
+                    #icon_label(icon='ticket-alt'),
                 ),
                 PrependedText(
                     'password',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
                 PrependedText(
                     'password2',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
             ),
         )
@@ -130,15 +130,15 @@ class StaffEditForm(BaseForm):
                 'Personal',
                 PrependedText(
                     'first_name',
-                    icon_label(icon='barcode'),
+                    #icon_label(icon='barcode'),
                 ),
                 PrependedText(
                     'last_name',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
                 PrependedText(
                     'email',
-                    icon_label(icon='ticket-alt'),
+                    #icon_label(icon='ticket-alt'),
                 ),
             ),
         )
@@ -201,13 +201,13 @@ class StaffChangePasswordForm(BaseForm):
             Field(
                 PrependedText(
                     'new_password1',
-                    icon_label(icon='id-card'),
+                    #icon_label(icon='id-card'),
                 ),
             ),
             Field(
                 PrependedText(
                     'new_password2',
-                    icon_label(icon='id-card'),
+                    #icon_label(icon='id-card'),
                 ),
             ),
             Checkbox(

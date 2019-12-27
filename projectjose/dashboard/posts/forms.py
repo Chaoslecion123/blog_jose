@@ -54,19 +54,19 @@ class PostForm(BaseForm):
                 'Proyecto',
                 PrependedText(
                     'slug',
-                    icon_label(icon='barcode'),
+                    #icon_label(icon='barcode'),
                 ),
                 PrependedText(
                     'title',
-                    icon_label(icon='ticket-alt'),
+                    #icon_label(icon='ticket-alt'),
                 ),
                 PrependedText(
                     'subtitle',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
                 PrependedText(
                     'content',
-                    icon_label(icon='pen-square'),
+                    #icon_label(icon='pen-square'),
                 ),
             ),
         )
