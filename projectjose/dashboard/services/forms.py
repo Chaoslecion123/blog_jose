@@ -52,35 +52,35 @@ class ServiceForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Servicio',
-                Field(
-                    'title'
-                ),
-                Field(
-                    'icon'
-                ),
-                Field(
-                    'content'
-                ),
-                Field(
-                    'image'
-                ),
+                # Field(
+                #     'title'
+                # ),
+                # Field(
+                #     'icon'
+                # ),
+                # Field(
+                #     'content'
+                # ),
+                # Field(
+                #     'image'
+                # ),
 
-                # PrependedText(
-                #     'title',
-                #     #icon_label(icon='barcode'),
-                # ),
-                # PrependedText(
-                #     'icon',
-                #     #icon_label(icon='ticket-alt'),
-                # ),
-                # PrependedText(
-                #     'content',
-                #     #icon_label(icon='pen-square'),
-                # ),
-                # PrependedText(
-                #     'image',
-                #     #icon_label(icon='pen-square'),
-                # ),
+                PrependedText(
+                    'title',
+                    icon_label(icon='barcode'),
+                ),
+                PrependedText(
+                    'icon',
+                    icon_label(icon='ticket-alt'),
+                ),
+                PrependedText(
+                    'content',
+                    icon_label(icon='pen-square'),
+                ),
+                PrependedText(
+                    'image',
+                    icon_label(icon='pen-square'),
+                ),
             ),
         )
 

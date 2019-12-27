@@ -6,8 +6,8 @@
 
 
 {% block view_header_back %}
-    {% comment %} {% url 'dashboard:home' as btn_target %}
-    {% include 'prodabre/_widgets/_button_return.html' %} {% endcomment %}
+    {% url 'dashboard:service-list' as btn_target %}
+    {% include 'dashboard/_widgets/_button_return.html' %}
 {% endblock view_header_back %}
 
 {% block view_header_title %}
