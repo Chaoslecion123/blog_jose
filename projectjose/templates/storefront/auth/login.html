@@ -3,12 +3,14 @@
 
 {% block vendors_css %}
 <link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/circular-std/style.css' %}">
-<link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
 {% endblock vendors_css %}
 
 {% block core_css %}
   <link rel="stylesheet" href="{% static 'administrador/css/style.css' %}">
+  <script src="https://kit.fontawesome.com/f8e43163b5.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Inria+Serif:400,700|Raleway:300,400&display=swap" rel="stylesheet">
 {% endblock core_css %}
 
 {% block custom_css %}
@@ -33,18 +35,13 @@
 <div class="splash-container">
     <div class="card ">
         <div class="card-header text-center">
-            <a href="#">
+            <a href="{% url 'core:index' %}">
                 <img class="logo-img" src="{% static 'img/brandb.png' %}" alt="White House" style="width:60%">
             </a>
         </div>
         <div class="card-body">
             {% include "storefront/auth/_forms/login.html" %}
         </div>
-        {% comment %}
-            <div class="card-body">
-                {% include "prodabre/_widgets/_form_basic.html" %}
-            </div>
-        {% endcomment %}
         <div class="card-footer p-0  ">
             <div class="card-footer-item card-footer-item-bordered">
                 Si olvido su contraseña pongase en contacto con el administrador.
