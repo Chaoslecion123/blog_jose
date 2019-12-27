@@ -12,5 +12,5 @@ urlpatterns = [
     path(r'services/',include(services_url),name='services'),
     path(r'staff/',include(staff_url),name='staff'),
     path(r'social/',include(social_url),name='social'),
-    path(r'',include(core_url),name='core'),
+    path(r'login/',include(core_url),name='core'),
 ]
