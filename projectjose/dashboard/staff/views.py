@@ -4,12 +4,14 @@ from django.views.generic import TemplateView, ListView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from projectjose.staff.models import Staff
 from .forms import StaffForm,StaffEditForm,StaffChangePasswordForm
 
-class StaffListView(ListView):
+class StaffListView(LoginRequiredMixin,SuccessMessageMixin,ListView):
+    login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/list.html'
     paginate_by = 20
@@ -23,7 +25,8 @@ class StaffListView(ListView):
     return_403 = True
     accept_global_perms = True
 
-class StaffAddView(CreateView):
+class StaffAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+    login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/add.html'
     form_class = StaffForm
@@ -34,7 +37,8 @@ class StaffAddView(CreateView):
             'dashboard:staff-list',
         )
 
-class StaffEditView(UpdateView):
+class StaffEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+    login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/edit.html'
     form_class = StaffEditForm
@@ -45,11 +49,13 @@ class StaffEditView(UpdateView):
             'dashboard:staff-list',
         )
 
-class StaffDetailView(DetailView):
+class StaffDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
+    login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/detail.html'
 
-class StaffDeleteView(SuccessMessageMixin,DeleteView):
+class StaffDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+    login_url = 'dashboard:login'
     model = Staff
     # template_name = 'dashboard/posts/post_.html'
     success_url = reverse_lazy('dashboard:staff-list')
@@ -57,6 +63,7 @@ class StaffDeleteView(SuccessMessageMixin,DeleteView):
     http_method_names = ['post', 'delete']
 
 class StaffChangePasswordView(StaffEditView):
+    login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/change-password.html'
     form_class = StaffChangePasswordForm

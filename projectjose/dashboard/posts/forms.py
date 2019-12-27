@@ -52,35 +52,22 @@ class PostForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Proyecto',
-                Field(
-                    'slug'
-                ),
-                Field(
-                    'title'
-                ),
-                Field(
-                    'subtitle'
-                ),
-                Field(
-                    'content'
-                ),
-
-                # PrependedText(
-                #     'slug',
-                #     #icon_label(icon='barcode'),
-                # ),
-                # PrependedText(
-                #     'title',
-                #     #icon_label(icon='ticket-alt'),
-                # ),
-                # PrependedText(
-                #     'subtitle',
-                #     #icon_label(icon='pen-square'),
-                # ),
-                # PrependedText(
-                #     'content',
-                #     #icon_label(icon='pen-square'),
-                # ),
+                 PrependedText(
+                    'slug',
+                    icon_label(icon='barcode'),
+                 ),
+                 PrependedText(
+                    'title',
+                    icon_label(icon='ticket-alt'),
+                 ),
+                 PrependedText(
+                    'subtitle',
+                    icon_label(icon='pen-square'),
+                 ),
+                 PrependedText(
+                    'content',
+                    icon_label(icon='pen-square'),
+                 ),
             ),
         )
 

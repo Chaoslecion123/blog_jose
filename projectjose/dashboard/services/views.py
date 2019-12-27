@@ -5,16 +5,19 @@ from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from projectjose.services.models import Service,AttributeService
 from .forms import ServiceForm,AttributeServiceForm
 
-class ServieViewList(ListView):
+class ServieViewList(LoginRequiredMixin,SuccessMessageMixin,ListView):
+    login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/list.html'
 
-class ServiceAddView(CreateView):
+class ServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+    login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/add.html'
     form_class = ServiceForm
@@ -28,21 +31,24 @@ class ServiceAddView(CreateView):
             }
         )
 
-class ServiceEditView(UpdateView):
+class ServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+    login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/edit.html'
     form_class = ServiceForm
     success_message = 'El servicio "%(title)s" fue actualizado exitosamente.'
     success_url = reverse_lazy('dashboard:service-list')
 
-class ServiceDetailView(DetailView):
+class ServiceDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
+    login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/detail.html'
 
 # ---------------------------------------------------------------------------- #
 # Service Attributes Views                                                        #
 # ---------------------------------------------------------------------------- #
-class AttributeServiceAddView(CreateView):
+class AttributeServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+    login_url = 'dashboard:login'
     model = AttributeService
     template_name = 'dashboard/services/attribute/add.html'
     form_class = AttributeServiceForm
@@ -64,7 +70,8 @@ class AttributeServiceAddView(CreateView):
     def get_success_url(self):
         return reverse_lazy('dashboard:service-detail', args=[self.kwargs['pk']])
 
-class AttributeServiceEditView(UpdateView):
+class AttributeServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+    login_url = 'dashboard:login'
     model = AttributeService
     template_name = 'dashboard/services/attribute/edit.html'
     form_class = AttributeServiceForm
@@ -87,7 +94,8 @@ class AttributeServiceEditView(UpdateView):
     def get_success_url(self):
         return reverse_lazy('dashboard:service-detail', args=[self.kwargs['pk']])
 
-class AttributeServiceDeleteView(DeleteView):
+class AttributeServiceDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+    login_url = 'dashboard:login'
     model = AttributeService
     form_class = AttributeServiceForm
     pk_url_kwarg = 'attribute_pk'

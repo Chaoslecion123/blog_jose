@@ -64,34 +64,22 @@ class StaffForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Personal',
-                Field(
-                    'username'
+                PrependedText(
+                    'username',
+                    icon_label(icon='barcode'),
                 ),
-                Field(
-                    'email'
+                PrependedText(
+                    'email',
+                    icon_label(icon='ticket-alt'),
                 ),
-                Field(
-                    'password'
+                PrependedText(
+                    'password',
+                    icon_label(icon='pen-square'),
                 ),
-                Field(
-                    'password2'
+                PrependedText(
+                    'password2',
+                    icon_label(icon='pen-square'),
                 ),
-                # PrependedText(
-                #     'username',
-                #     #icon_label(icon='barcode'),
-                # ),
-                # PrependedText(
-                #     'email',
-                #     #icon_label(icon='ticket-alt'),
-                # ),
-                # PrependedText(
-                #     'password',
-                #     #icon_label(icon='pen-square'),
-                # ),
-                # PrependedText(
-                #     'password2',
-                #     #icon_label(icon='pen-square'),
-                # ),
             ),
         )
 
@@ -140,27 +128,18 @@ class StaffEditForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Personal',
-                Field(
-                    'first_name'
+                PrependedText(
+                    'first_name',
+                    icon_label(icon='barcode'),
                 ),
-                Field(
-                    'last_name'
+                PrependedText(
+                    'last_name',
+                    icon_label(icon='pen-square'),
                 ),
-                Field(
-                    'email'
+                PrependedText(
+                    'email',
+                    icon_label(icon='ticket-alt'),
                 ),
-                # PrependedText(
-                #     'first_name',
-                #     #icon_label(icon='barcode'),
-                # ),
-                # PrependedText(
-                #     'last_name',
-                #     #icon_label(icon='pen-square'),
-                # ),
-                # PrependedText(
-                #     'email',
-                #     #icon_label(icon='ticket-alt'),
-                # ),
             ),
         )
 
@@ -197,23 +176,17 @@ class StaffChangePasswordForm(BaseForm):
         super().__init__(*args, **kwargs)
         self.helper.layout = Layout(
             Field(
-                'new_password1'
+                PrependedText(
+                    'new_password1',
+                    icon_label(icon='id-card'),
+                ),
             ),
             Field(
-                'new_password2'
+                PrependedText(
+                    'new_password2',
+                    icon_label(icon='id-card'),
+                ),
             ),
-            # Field(
-            #     PrependedText(
-            #         'new_password1',
-            #         #icon_label(icon='id-card'),
-            #     ),
-            # ),
-            # Field(
-            #     PrependedText(
-            #         'new_password2',
-            #         #icon_label(icon='id-card'),
-            #     ),
-            # ),
             Checkbox(
                 'send_notification'
             ),
