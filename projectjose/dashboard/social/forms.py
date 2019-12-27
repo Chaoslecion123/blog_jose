@@ -50,17 +50,27 @@ class LinkForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Red Social',
-                PrependedText(
-                    'key',
-                    #icon_label(icon='barcode'),
+                Field(
+                'key'
                 ),
-                PrependedText(
-                    'name',
-                    #icon_label(icon='ticket-alt'),
+                Field(
+                    'name'
                 ),
-                PrependedText(
-                    'url',
-                    #icon_label(icon='pen-square'),
+                Field(
+                    'url'
                 ),
+
+                # PrependedText(
+                #     'key',
+                #     #icon_label(icon='barcode'),
+                # ),
+                # PrependedText(
+                #     'name',
+                #     #icon_label(icon='ticket-alt'),
+                # ),
+                # PrependedText(
+                #     'url',
+                #     #icon_label(icon='pen-square'),
+                # ),
             ),
         )

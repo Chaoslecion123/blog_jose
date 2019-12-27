@@ -64,22 +64,34 @@ class StaffForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Personal',
-                PrependedText(
-                    'username',
-                    #icon_label(icon='barcode'),
+                Field(
+                    'username'
                 ),
-                PrependedText(
-                    'email',
-                    #icon_label(icon='ticket-alt'),
+                Field(
+                    'email'
                 ),
-                PrependedText(
-                    'password',
-                    #icon_label(icon='pen-square'),
+                Field(
+                    'password'
                 ),
-                PrependedText(
-                    'password2',
-                    #icon_label(icon='pen-square'),
+                Field(
+                    'password2'
                 ),
+                # PrependedText(
+                #     'username',
+                #     #icon_label(icon='barcode'),
+                # ),
+                # PrependedText(
+                #     'email',
+                #     #icon_label(icon='ticket-alt'),
+                # ),
+                # PrependedText(
+                #     'password',
+                #     #icon_label(icon='pen-square'),
+                # ),
+                # PrependedText(
+                #     'password2',
+                #     #icon_label(icon='pen-square'),
+                # ),
             ),
         )
 
@@ -128,45 +140,31 @@ class StaffEditForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Personal',
-                PrependedText(
-                    'first_name',
-                    #icon_label(icon='barcode'),
+                Field(
+                    'first_name'
                 ),
-                PrependedText(
-                    'last_name',
-                    #icon_label(icon='pen-square'),
+                Field(
+                    'last_name'
                 ),
-                PrependedText(
-                    'email',
-                    #icon_label(icon='ticket-alt'),
+                Field(
+                    'email'
                 ),
+                # PrependedText(
+                #     'first_name',
+                #     #icon_label(icon='barcode'),
+                # ),
+                # PrependedText(
+                #     'last_name',
+                #     #icon_label(icon='pen-square'),
+                # ),
+                # PrependedText(
+                #     'email',
+                #     #icon_label(icon='ticket-alt'),
+                # ),
             ),
         )
 
 
-    # def clean_username(self):
-    #     username = self.cleaned_data.get('username')
-    #     if User.objects.filter(username=username).exists():
-    #         raise forms.ValidationError('El username se encuentra en uso.')
-    #     return username
-
-    # def clean_email(self):
-    #     email = self.cleaned_data.get('email')
-    #     if User.objects.filter(email=email).exists():
-    #         raise forms.ValidationError('El email se encuentra en uso.')
-    #     return email
-
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     if cleaned_data.get('password2') != cleaned_data.get('password'):
-    #         self.add_error('password2','El password no coincide')
-
-    # def save(self):
-    #     return User.objects.create_user(
-    #         self.cleaned_data.get('username'),
-    #         self.cleaned_data.get('email'),
-    #         self.cleaned_data.get('password')
-    #     )
 
 class StaffChangePasswordForm(BaseForm):
     """
@@ -199,17 +197,23 @@ class StaffChangePasswordForm(BaseForm):
         super().__init__(*args, **kwargs)
         self.helper.layout = Layout(
             Field(
-                PrependedText(
-                    'new_password1',
-                    #icon_label(icon='id-card'),
-                ),
+                'new_password1'
             ),
             Field(
-                PrependedText(
-                    'new_password2',
-                    #icon_label(icon='id-card'),
-                ),
+                'new_password2'
             ),
+            # Field(
+            #     PrependedText(
+            #         'new_password1',
+            #         #icon_label(icon='id-card'),
+            #     ),
+            # ),
+            # Field(
+            #     PrependedText(
+            #         'new_password2',
+            #         #icon_label(icon='id-card'),
+            #     ),
+            # ),
             Checkbox(
                 'send_notification'
             ),
