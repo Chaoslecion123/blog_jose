@@ -140,7 +140,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = (
     'bootstrap',
     'bootstrap3',
     'bootstrap4',
-    #'concept',
+    'concept',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
