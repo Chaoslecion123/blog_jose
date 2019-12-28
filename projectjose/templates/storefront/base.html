@@ -40,19 +40,12 @@
 {% block content %}
     <div class="dashboard-main-wrapper">
         {% block view %}
-            <div class="dashboard-header">
+            {% comment %} <div class="dashboard-header">
                 <nav class="navbar navbar-expand-lg bg-white fixed-top">
                     <a class="navbar-brand " href="#">
                         <img src="{% static 'img/brandb.png' %}" alt="White House" style="height:45px;">
                     </a>
                     <div class="d-flex justify-content-end">
-                    {% comment %} <div class="text-right-shop2 mt-3">
-                        <a href="{% url 'storefront:storefront-product-cart' %}"><i class="fa fa-lg fa-2x fa-shopping-cart"></i>
-                            <span class="badge2 {% if not checkout_counter %}empty{% endif%}">
-                                <strong>{{request.COOKIES.count_product}}</strong>
-                            </span>
-                        </a>
-                    </div> {% endcomment %}
                     <button class="navbar-toggler mr-3 mt-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon">
                             <i class="fas fa-chevron-down"></i>
@@ -86,19 +79,6 @@
                                     Testimonios
                                 </a>
                             </li>
-                            {% comment %}
-                                <li class="shop">
-                                    <div class="mt-4 ml-3 mr-3 nav-item pr-2 pl-2">
-                                        <div class="text-right-shop">
-                                            <a  href="{% url 'storefront:storefront-product-cart' %}"><i class="fa fa-lg fa-2x fa-shopping-cart" ></i>
-                                            </a>
-                                            <span class="badge {% if not checkout_counter %}empty{% endif%}">
-                                            <strong>{{request.COOKIES.count_product|default:'0'}}</strong>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                            {% endcomment %}
                             {% if user.is_authenticated %}
                                 {% if user.is_staff %}
                                     <li class="nav-item">
@@ -109,14 +89,6 @@
                                         </span>
                                     </li>
                                     <div>
-                                        {% comment %} <div class="nav-user-info">
-                                            <h5 class="mb-0 text-white nav-user-name">
-                                                {{ request.user.get_full_name }}
-                                            </h5>
-                                        </div>
-                                        <a class="dropdown-item" href="{% url 'storefront:user-detail' %}">
-                                            <i class="fas fa-user mr-1"></i>Mi cuenta
-                                        </a> {% endcomment %}
                                         <a class="dropdown-item" href="{% url 'storefront:logout' %}">
                                             <i class="fas fa-power-off mr-1"></i>Salir
                                         </a>
@@ -184,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         {% endblock view %}
     </div>
 {% endblock content %}
