@@ -1,7 +1,7 @@
 {% extends 'storefront/base.html' %}
 {% load static %}
 
-{% comment %} {% block vendors_css %}
+{% block vendors_css %}
 <link rel="stylesheet" href="{% static 'assets/vendorsito/bootstrap/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/circular-std/style.css' %}">
 <link rel="stylesheet" href="{% static 'assets/vendorsito/fonts/fontawesome/css/fontawesome-all.css' %}">
@@ -27,7 +27,7 @@
         padding-bottom: 40px;
     }
 </style>
-{% endblock custom_css %} {% endcomment %}
+{% endblock custom_css %}
 
 {% block content %}
 <div class="splash-container">
