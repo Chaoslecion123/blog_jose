@@ -33,7 +33,7 @@
             </div>
         {% endif %}
     </div>
-    {% comment %} {% url 'dashboard:staff-list' as redirect %}
-    <input type="hidden" name="{{ REDIRECT_FIELD_NAME|default:'next' }}" value="{{ REDIRECT_FIELD_VALUE|default:redirect }}"/> {% endcomment %}
+    {% url 'dashboard:staff-list' as redirect %}
+    <input type="hidden" name="{{ REDIRECT_FIELD_NAME|default:'next' }}" value="{{ REDIRECT_FIELD_VALUE|default:redirect }}"/>
     <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
 </form>

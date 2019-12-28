@@ -1,4 +1,5 @@
-{% extends 'storefront/base.html' %}
+{% include "storefront/auth/_forms/login.html" %}
+{% comment %} {% extends 'storefront/base.html' %}
 {% load static %}
 
 {% block vendors_css %}
@@ -47,4 +48,4 @@
         </div>
     </div>
 </div>
-{% endblock content %}
+{% endblock content %} {% endcomment %}
