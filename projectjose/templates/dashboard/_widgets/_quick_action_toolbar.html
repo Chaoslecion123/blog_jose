@@ -1,0 +1,25 @@
+{% load static %}
+<li class="nav-item">
+    <a href="{% url 'dashboard:post-add' %}" class="nav-link quick-action">
+        <img class="quick-action--icon user-avatar-md mr-2" src="{% static 'administrador/dashboard/img/sales-add.png' %}">
+        <span class="quick-action--text">
+            Agregar Proyecto
+        </span>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{% url 'dashboard:service-add' %}" class="nav-link quick-action">
+        <img class="quick-action--icon user-avatar-md mr-2" src="{% static 'administrador/dashboard/img/user-add.png' %}">
+        <span class="quick-action--text">
+            Agregar Servicio
+        </span>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{% url 'dashboard:staff-add' %}" class="nav-link quick-action">
+        <img class="quick-action--icon user-avatar-md mr-2" src="{% static 'administrador/dashboard/img/personal-add.png' %}">
+        <span class="quick-action--text">
+            Agregar Personal
+        </span>
+    </a>
+</li>
