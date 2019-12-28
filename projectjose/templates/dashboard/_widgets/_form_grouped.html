@@ -7,6 +7,7 @@
     <div class="card-body p-0">
     {% block forms %}
         {% crispy form %}
+        {{form.errors}}
     {% endblock forms %}
     </div>
     {% if not hide_buttons %}

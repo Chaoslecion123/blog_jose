@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
 
 ]
 LOCAL_APPS = [
+    'projectjose.users',
     'projectjose.dashboard',
     'projectjose.social',
     'projectjose.services',
@@ -103,6 +104,7 @@ STATICFILES_FINDERS = [
 # Media
 MEDIA_ROOT = str(APPS_DIR('media'))
 MEDIA_URL = '/media/'
+
 
 # Templates
 TEMPLATES = [

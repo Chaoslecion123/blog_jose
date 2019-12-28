@@ -4,9 +4,9 @@ from django.core.exceptions import ValidationError
 
 class Service(models.Model):
     title = models.CharField(max_length=80)
-    icon = models.FileField(upload_to='iconos')
+    icon = models.FileField(upload_to='iconos',null=True,blank=True)
     content = models.TextField()
-    image = models.ImageField(upload_to='services')
+    image = models.ImageField(upload_to='services',null=True,blank=True)
     created = models.DateTimeField(verbose_name="Fecha de creación", auto_now_add=True)
     updated = models.DateTimeField(verbose_name="Fecha de edición", auto_now=True)
 

@@ -21,7 +21,8 @@
   <script src="https://kit.fontawesome.com/f8e43163b5.js" crossorigin="anonymous"></script>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Inria+Serif:400,700|Raleway:300,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inria+Serif:400,700|Raleway:300,400&display=swap"
+    rel="stylesheet">
 
 </head>
 
@@ -69,12 +70,13 @@
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div>
-            {% for image_ in object.images.all %}
-              {% if forloop.first %}
-              <img class="img-fluid ft-post-img" src="{{image_.image.url}}">
-              {% endif %}
-            {% endfor %}
-
+              {% for image_ in object.images.all %}
+                {% if forloop.first %}
+                {% if image_.image %}
+                  <img class="img-fluid ft-post-img" src="{{image_.image.url}}">
+                {% endif %}
+                {% endif %}
+              {% endfor %}
           </div>
         </div>
         <div class="col-lg-5">
@@ -94,7 +96,9 @@
         {% if forloop.counter > 1 %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card card-block">
+            {% if image_.image %}
             <img src="{{image_.image.url}}"><hr>
+            {% endif %}
             <p class="ft-postp">{{image_.alt}}</p>
           </div>
         </div>
@@ -123,10 +127,10 @@
         <div class="col-sm-3 ftft4 text-right">
           <p class="ftsocial">
             {% if LINK_FACEBOOK %}
-              <a class="btn btn-circle" href="{{LINK_FACEBOOK}}" role="button"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-circle" href="{{LINK_FACEBOOK}}" role="button"><i class="fab fa-facebook-f"></i></a>&nbsp&nbsp
             {% endif %}
             {% if LINK_INSTAGRAM %}
-              <a class="btn btn-circle" href="{{LINK_INSTAGRAM}}" role="button"><i class="fab fa-instagram"></i></i></a>
+              <a class="btn btn-circle" href="{{LINK_INSTAGRAM}}" role="button"><i class="fab fa-instagram"></i></i></a>&nbsp&nbsp
             {% endif %}
             {% if LINK_LINKEDIN %}
               <a class="btn btn-circle" href="{{LINK_LINKEDIN}}" role="button"><i class="fab fa-linkedin-in"></i></a>
@@ -151,7 +155,7 @@
             </button>
           </div>
           <div id="navpos2" class="col text-center">
-          <a class="navbar-brand mx-auto" href="index.html"><img src="{% static 'img/brandw.png' %}" class="responsive" style="max-height: 40px;width: auto;"/></a>
+          <a class="navbar-brand mx-auto" href="{% url 'core:index' %}"><img src="{% static 'img/brandw.png' %}" class="responsive" style="max-height: 40px;width: auto;"/></a>
           </div>
           <div id="navpos3" class="col text-right">
           </div>
@@ -162,13 +166,13 @@
           <div class="p-4">
             <ul class="navbar-nav ml-auto ftmtabla">
               <li class="nav-item">
-                <a class="nav-link text-center" href="index.html">Proyectos</a>
+                <a class="nav-link text-center" href="{% url 'core:index' %}">Proyectos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="nosotros.html">Nosotros</a>
+                <a class="nav-link text-center" href="{% url 'services:nosotros' %}">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="contacto.html">Contacto</a>
+                <a class="nav-link text-center" href="{% url 'core:contact' %}">Contacto</a>
               </li>
             </ul>
           </div>

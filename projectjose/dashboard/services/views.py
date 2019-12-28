@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
+from django.db import transaction
 from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -19,8 +20,8 @@ class ServieViewList(LoginRequiredMixin,SuccessMessageMixin,ListView):
 class ServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     login_url = 'dashboard:login'
     model = Service
-    template_name = 'dashboard/services/add.html'
     form_class = ServiceForm
+    template_name = 'dashboard/services/add.html'
     success_message = 'El servicio "%(title)s" fue creado exitosamente.'
 
     def get_success_url(self):
@@ -30,6 +31,26 @@ class ServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
                 'pk': self.object.pk
             }
         )
+
+    # def get_context_data(self, **kwargs):
+    #     self.object = None
+    #     context = super().get_context_data(**kwargs)
+    #     context['form'] = ServiceForm(
+    #         self.request.POST or None, self.request.FILES or None
+    #     )
+
+    # def form_valid(self, form):
+    #     context = self.get_context_data()
+    #     form = context['form']
+
+    #     with transaction.atomic():
+    #         form.instance = form.instance
+    #         if form.is_valid():
+    #             self.object = form.save()
+    #         else:
+    #             return self.render_to_response(context)
+
+    #     return HttpResponseRedirect(self.get_success_url())
 
 class ServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     login_url = 'dashboard:login'

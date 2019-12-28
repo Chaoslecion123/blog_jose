@@ -13,16 +13,22 @@
           <div class="row align-items-center">
             <div id="ft-oser1" class="col-lg-1"></div>
             <div id="ft-oser2" class="col-lg-5">
+              {% if service.image %}
               <img class="img-fluid mb-4 mb-lg-0" src="{{service.image.url}}">
+              {% endif %}
             </div>
             <div id="ft-oser3" class="col-lg-4">
+              {% if service.icon %}
               <h1 class="ft-tserv"><img src="{{service.icon.url}}" class="ft-icon"></img>{{service.title}}</h1>
+              {% endif %}
               <p class="ft-pserv">{{service.content}}</p>
               <hr>
               <p class="ft-pserv tags text-uppercase">
-                {% for attribute in service.attributes.all  %}
-                  {{attribute}} {% if not forloop.last %}  /  {% endif %}
-                {% endfor %}
+                {% if service.attributes.all %}
+                  {% for attribute in service.attributes.all  %}
+                    {{attribute}} {% if not forloop.last %}  /  {% endif %}
+                  {% endfor %}
+                {% endif %}
               </p>
               <hr><br>
               <a class="ft-linkbt" href="{% url 'core:contact' %}">Solicitar más información</a>
@@ -38,13 +44,19 @@
           <div class="row align-items-center">
             <div id="ft-oser1" class="col-lg-1"></div>
             <div id="ft-oser3" class="col-lg-4">
-              <h1 class="ft-tserv"><img src="{{service.icon.url}}" class="ft-icon"></img>{{service.title}}</h1>
+              <h1 class="ft-tserv">
+              {% if service.icon %}
+              <img src="{{service.icon.url}}" class="ft-icon"></img> {{service.title}}
+              {% endif %}
+              </h1>
               <p class="ft-pserv">{{service.content}}</p><br>
               <a class="ft-linkbt" href="{% url 'core:contact' %}">Solicitar más información</a>
             </div>
             <div id="ft-oser4" class="col-lg-1"></div>
             <div id="ft-oser2" class="col-lg-5">
+              {% if service.image %}
               <img class="img-fluid mb-4 mb-lg-0" src="{{service.image.url}}">
+              {% endif %}
             </div>
             <div id="ft-oser5" class="col-lg-1"></div>
           </div>

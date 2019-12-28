@@ -6,8 +6,30 @@
 {% endblock navbar %}
 
 {% block content %}
+
   <!-- Cuerpo -->
-  <div class="container">
+   <div class="container">
+    <div class="gallery">
+      {% for post in posts   %}
+        {% for image_ in post.images.all  %}
+          {% if forloop.first %}
+              <a href="{% url 'posts:post-detail' the_slug=post.slug %}"><img src="{{image_.image.url}}" /></a>
+          {% endif  %}
+        {% endfor %}
+      {% endfor %}
+      {% comment %} <a href="#"><img src="{% static 'img/p01.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p02.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p03.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p04.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p05.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p06.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p07.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p08.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p01.png' %}" /></a>
+      <a href="#"><img src="{% static 'img/p01.png' %}" /></a> {% endcomment %}
+    </div>
+  </div>
+  {% comment %} <div class="container">
     <div class="row">
       <div class="card-columns">
       {% for post in posts   %}
@@ -22,6 +44,6 @@
       </div>
     </div>
   </div>
-  <!-- /Cuerpo -->
+  <!-- /Cuerpo --> {% endcomment %}
 
 {% endblock content %}
