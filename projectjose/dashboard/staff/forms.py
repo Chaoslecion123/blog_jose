@@ -102,11 +102,16 @@ class StaffForm(BaseForm):
             self.add_error('password2','El password no coincide')
 
     def save(self):
-        return User.objects.create_user(
+        user = User.objects.create_user(
             self.cleaned_data.get('username'),
             self.cleaned_data.get('email'),
             self.cleaned_data.get('password')
+
         )
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return user
 
 class StaffEditForm(BaseForm):
     class Meta:
