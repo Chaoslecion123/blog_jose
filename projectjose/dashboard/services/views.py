@@ -65,6 +65,14 @@ class ServiceDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
     model = Service
     template_name = 'dashboard/services/detail.html'
 
+class ServiceDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+    login_url = 'dashboard:login'
+    model = Service
+    # template_name = 'dashboard/posts/post_.html'
+    success_url = reverse_lazy('dashboard:service-list')
+    success_message = 'El servicio "%(title)s" fue eliminado exitosamente.'
+    http_method_names = ['post', 'delete']
+
 # ---------------------------------------------------------------------------- #
 # Service Attributes Views                                                        #
 # ---------------------------------------------------------------------------- #

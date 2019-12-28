@@ -23,7 +23,7 @@
                     {% include 'dashboard/_widgets/_button.html' with btn_icon='eye' btn_type="success" btn_classes='btn-outline-success text-success py-1 px-2' %}
                     {% url 'dashboard:service-edit' pk=object.pk as btn_target %}
                     {% include 'dashboard/_widgets/_button.html' with btn_icon='edit' btn_type="warning" btn_classes='btn-outline-warning text-warning py-1 px-2' %}
-                    <a class="btn py-1 px-2" href="{% url 'dashboard:post-delete' pk=object.pk %}" data-toggle="modal" data-target="#delete-modal">
+                    <a class="btn py-1 px-2" href="{% url 'dashboard:service-delete' pk=object.pk %}" data-toggle="modal" data-target="#delete-modal">
                         <i class="fas fa-fw fa-trash-alt text-danger" title="Eliminar"></i>
                     </a>
                 {% endspaceless %}
