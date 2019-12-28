@@ -52,19 +52,6 @@ class ServiceForm(BaseForm):
         self.helper.layout = Layout(
             ProdabreFieldset(
                 'Servicio',
-                # Field(
-                #     'title'
-                # ),
-                # Field(
-                #     'icon'
-                # ),
-                # Field(
-                #     'content'
-                # ),
-                # Field(
-                #     'image'
-                # ),
-
                 PrependedText(
                     'title',
                     icon_label(icon='barcode'),

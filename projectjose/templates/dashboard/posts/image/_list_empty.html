@@ -3,6 +3,6 @@
 {% block title %}No se ha registrado ningúna Imagen aún.{% endblock title %}
 
 {% block action %}
-    {% url 'dashboard:product-add' as btn_target %}
+    {% url 'dashboard:post-image-add' pk=object.pk  as btn_target %}
     {% include 'dashboard/_widgets/_button_new.html' with btn_text='Nuevo' %}
 {% endblock action %}
