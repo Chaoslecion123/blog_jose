@@ -1,4 +1,4 @@
-
+ 
 .ft-bodyn{
   padding-top: 56px;
 }
@@ -134,7 +134,7 @@ i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
   height: 100%;
   width: 100%;
   object-fit: cover;
-  padding: 0.5em; 
+  padding: 3px; 
 }
 
 .gallery a:nth-of-type(1) {
@@ -201,7 +201,7 @@ footer > div > hr{
     height: 100%;
     width: 100%;
     object-fit: cover;
-    padding: 0.5em; 
+    padding: 3px; 
   }
 
   .gallery a:nth-of-type(n) {
@@ -286,6 +286,13 @@ footer > div > hr{
   z-index: -200;
 }
 
+@media only screen and (min-width: 768px){
+  .ft-contserv{
+    max-width: 1800px;
+  }
+}
 
 
-
+#navpos2 > a > img {
+  max-height: 48px !important;
+}

@@ -221,7 +221,7 @@ i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
 
 img.conimg{
   width: 100%;
-  height: 360px;
+  height: 750px;
   object-position: 50% 50%;
   object-fit: cover;
   filter: brightness(0.8);  
@@ -274,10 +274,27 @@ label{
 
 img.ft-carimg{
   width: 100%;
-  height: 360px;
+  height: 750px;
   object-position: 50% 50%;
   object-fit: cover;
   filter: brightness(0.8);  
+}
+
+@media only screen and (max-width: 991px){
+  img.ft-carimg{
+    width: 100%;
+    height: 320px;
+    object-position: 50% 50%;
+    object-fit: cover;
+    filter: brightness(0.8);  
+  }
+  img.conimg{
+  width: 100%;
+  height: 320px;
+  object-position: 50% 50%;
+  object-fit: cover;
+  filter: brightness(0.8);  
+}
 }
 
 .ft-posth1p{
@@ -292,7 +309,7 @@ h1.ft-posth1{
 
 .ft-postp{
   color: #A7A7A7;
-  letter-spacing: 1pt;
+  letter-spacing: 0.5pt;
   font-size: 0.8em;
 }
 
@@ -352,7 +369,7 @@ body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
   top: 20px;
   left: -20px;
   width: 100%;
-  height: 400px;
+  height: 100%;
   border: 1px solid #000;
   position: absolute;
   z-index: -1
@@ -376,7 +393,7 @@ body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
 
 .ft-post-img{
   width: auto;
-  height: 400px;
+  height: auto;
   object-position: 50% 50%;
   object-fit: cover;
 }
@@ -395,4 +412,8 @@ footer > div > hr{
   line-height: 1.42857;
   background-color: #000;
   border-color: #000;
+}
+
+#navpos2 > a > img {
+  max-height: 48px !important;
 }
