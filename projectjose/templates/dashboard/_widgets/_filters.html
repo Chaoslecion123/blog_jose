@@ -1,0 +1,81 @@
+{% comment %} {% load core_tags %} {% endcomment %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% if use_simple_search %}
+
+    <form id="list-search-form" action="." method="GET" class="card prodabre-card">
+        <div class="card-header bg-light">
+            <i class="fas fa-fw fa-search"></i>
+            Búsqueda
+        </div>
+        <div class="card-body">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-fw fa-search primary"></i>
+                    </span>
+                </div>
+                <input id="id_search" name="search" type="text" placeholder="Buscar..." class="form-control" value="{{ request.GET.search }}">
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary btn-xs" type="submit">
+                Buscar
+            </button>
+            <a href="{{ target }}" class="btn btn-warning ml-2 btn-xs">
+                Limpiar
+            </a>
+        </div>
+    </form>
+{% endif %}
+
+{% if advanced_search_form %}
+    <form id="list-advanced-search-form" action="." method="GET" class="card prodabre-card">
+        <div class="card-header bg-light">
+            <i class="fas fa-fw fa-search"></i>
+            Búsqueda avanzada
+            <div class="card-header__action float-right">
+                {% include './_button_collapse.html' with btn_target="#advanced-search" btn_classes="btn-xs py-1 px-2" %}
+            </div>
+        </div>
+        <div class="collapse show" id="advanced-search">
+            <div class="card-body pt-0">
+                {% crispy advanced_search_form %}
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary btn-xs" type="submit">
+                    Buscar
+                </button>
+                <a href="{{ target }}" class="btn btn-warning btn-xs ml-2">
+                    Limpiar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endif %}
+
+{% if filter_form %}
+    <form id="list-filter-form" action="." method="GET" class="card prodabre-card">
+        <div class="card-header bg-light">
+            <i class="fas fa-fw fa-filter"></i>
+            Filtros
+            <div class="card-header__action float-right">
+                {% include './_button_collapse.html' with btn_target="#filter" btn_classes="btn-xs py-1 px-2" %}
+            </div>
+        </div>
+        <div class="collapse show" id="filter">
+            <div class="card-body pt-0">
+                {% crispy filter_form %}
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary btn-xs" type="submit">
+                    Filtrar
+                </button>
+                <a href="{{ target }}" class="btn btn-warning btn-xs ml-2">
+                    Limpiar
+                </a>
+            </div>
+        </div>
+    </form>
+{% endif %}

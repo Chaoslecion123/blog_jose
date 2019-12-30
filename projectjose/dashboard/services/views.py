@@ -7,17 +7,25 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from ..mixins import (
+    DashboardMixin,
+    DashboardListMixin,
+    DashboardDeleteMixin,
+)
 
 
 from projectjose.services.models import Service,AttributeService
 from .forms import ServiceForm,AttributeServiceForm
 
-class ServieViewList(LoginRequiredMixin,SuccessMessageMixin,ListView):
+class ServieViewList(DashboardListMixin,ListView):
     login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/list.html'
+    search_fileds = [
+        'title',
+    ]
 
-class ServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class ServiceAddView(DashboardMixin,CreateView):
     login_url = 'dashboard:login'
     model = Service
     form_class = ServiceForm
@@ -52,7 +60,7 @@ class ServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
 
     #     return HttpResponseRedirect(self.get_success_url())
 
-class ServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+class ServiceEditView(DashboardMixin,UpdateView):
     login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/edit.html'
@@ -60,12 +68,12 @@ class ServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     success_message = 'El servicio "%(title)s" fue actualizado exitosamente.'
     success_url = reverse_lazy('dashboard:service-list')
 
-class ServiceDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
+class ServiceDetailView(DashboardMixin,DetailView):
     login_url = 'dashboard:login'
     model = Service
     template_name = 'dashboard/services/detail.html'
 
-class ServiceDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+class ServiceDeleteView(DashboardDeleteMixin,DeleteView):
     login_url = 'dashboard:login'
     model = Service
     # template_name = 'dashboard/posts/post_.html'
@@ -76,7 +84,7 @@ class ServiceDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
 # ---------------------------------------------------------------------------- #
 # Service Attributes Views                                                        #
 # ---------------------------------------------------------------------------- #
-class AttributeServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class AttributeServiceAddView(DashboardMixin,CreateView):
     login_url = 'dashboard:login'
     model = AttributeService
     template_name = 'dashboard/services/attribute/add.html'
@@ -99,7 +107,7 @@ class AttributeServiceAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView)
     def get_success_url(self):
         return reverse_lazy('dashboard:service-detail', args=[self.kwargs['pk']])
 
-class AttributeServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+class AttributeServiceEditView(DashboardMixin,UpdateView):
     login_url = 'dashboard:login'
     model = AttributeService
     template_name = 'dashboard/services/attribute/edit.html'
@@ -123,7 +131,7 @@ class AttributeServiceEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView
     def get_success_url(self):
         return reverse_lazy('dashboard:service-detail', args=[self.kwargs['pk']])
 
-class AttributeServiceDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+class AttributeServiceDeleteView(DashboardDeleteMixin,DeleteView):
     login_url = 'dashboard:login'
     model = AttributeService
     form_class = AttributeServiceForm

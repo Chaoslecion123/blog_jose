@@ -1,0 +1,7 @@
+<div class="card-header table-prodabre__result_counter">
+    {% if count == 1 %}
+        {% block single %}Se encontró {{ count }} resultado{% endblock single %}
+    {% else %}
+        {% block plural %}Se encontraron {{ count }} resultados{% endblock plural %}
+    {% endif %}
+</div>

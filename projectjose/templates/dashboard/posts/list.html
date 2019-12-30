@@ -49,8 +49,8 @@
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                {% comment %} {% url 'dashboard:product-list' as target %}
-                {% include 'prodabre/_widgets/_filters.html' %} {% endcomment %}
+                {% url 'dashboard:post-list' as target %}
+                {% include 'dashboard/_widgets/_filters.html' %}
             </div>
         {% else %}
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

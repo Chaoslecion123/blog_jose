@@ -6,6 +6,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+from ..mixins import (
+    DashboardMixin,
+    DashboardListMixin,
+    DashboardDeleteMixin,
+)
 
 
 
@@ -13,12 +18,17 @@ from projectjose.posts.models  import Post,PostImage
 from .forms import PostForm,PostImageForm
 
 
-class PostListView(LoginRequiredMixin,SuccessMessageMixin,ListView):
+class PostListView(DashboardListMixin,ListView):
     login_url = 'dashboard:login'
     model = Post
     template_name = 'dashboard/posts/list.html'
+    search_fileds = [
+        'slug',
+        'title',
+        'subtitle',
+    ]
 
-class PostAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class PostAddView(DashboardMixin,CreateView):
     login_url = 'dashboard:login'
     model = Post
     template_name = 'dashboard/posts/add.html'
@@ -33,7 +43,7 @@ class PostAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
             }
         )
 
-class PostEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+class PostEditView(DashboardMixin,UpdateView):
     login_url = 'dashboard:login'
     model = Post
     template_name = 'dashboard/posts/edit.html'
@@ -41,12 +51,12 @@ class PostEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     success_message = 'El proyecto "%(title)s" fue actualizado exitosamente.'
     success_url = reverse_lazy('dashboard:post-list')
 
-class PostDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
+class PostDetailView(DashboardMixin,DetailView):
     login_url = 'dashboard:login'
     model = Post
     template_name = 'dashboard/posts/detail.html'
 
-class PostDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+class PostDeleteView(DashboardDeleteMixin,DeleteView):
     login_url = 'dashboard:login'
     model = Post
     # template_name = 'dashboard/posts/post_.html'
@@ -58,7 +68,7 @@ class PostDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
 # ---------------------------------------------------------------------------- #
 # Post Images Views                                                            #
 # ---------------------------------------------------------------------------- #
-class PostImageAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class PostImageAddView(DashboardMixin,CreateView):
     login_url = 'dashboard:login'
     model = PostImage
     template_name = 'dashboard/posts/image/add.html'
@@ -81,7 +91,7 @@ class PostImageAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     def get_success_url(self):
         return reverse_lazy('dashboard:post-detail', args=[self.kwargs['pk']])
 
-class PostImageEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+class PostImageEditView(DashboardMixin,UpdateView):
     login_url = 'dashboard:login'
     model = PostImage
     template_name = 'dashboard/posts/image/edit.html'
@@ -104,7 +114,7 @@ class PostImageEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     def get_success_url(self):
         return reverse_lazy('dashboard:post-detail', args=[self.kwargs['pk']])
 
-class PostImageDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+class PostImageDeleteView(DashboardDeleteMixin,DeleteView):
     login_url = 'dashboard:login'
     model = PostImage
     form_class = PostImageForm

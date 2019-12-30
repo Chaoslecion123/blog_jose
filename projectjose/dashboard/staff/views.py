@@ -5,12 +5,16 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from ..mixins import (
+    DashboardMixin,
+    DashboardListMixin,
+    DashboardDeleteMixin,
+)
 
 from projectjose.staff.models import Staff
 from .forms import StaffForm,StaffEditForm,StaffChangePasswordForm
 
-class StaffListView(LoginRequiredMixin,SuccessMessageMixin,ListView):
+class StaffListView(DashboardListMixin,ListView):
     login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/list.html'
@@ -18,14 +22,13 @@ class StaffListView(LoginRequiredMixin,SuccessMessageMixin,ListView):
     search_fileds = [
         'first_name',
         'last_name',
-        'is_staff'
-        'is_active',
-        'is_superuser',
+        'email',
+        'username',
     ]
     return_403 = True
     accept_global_perms = True
 
-class StaffAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
+class StaffAddView(DashboardMixin,CreateView):
     login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/add.html'
@@ -37,7 +40,7 @@ class StaffAddView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
             'dashboard:staff-list',
         )
 
-class StaffEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
+class StaffEditView(DashboardMixin,UpdateView):
     login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/edit.html'
@@ -49,12 +52,12 @@ class StaffEditView(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
             'dashboard:staff-list',
         )
 
-class StaffDetailView(LoginRequiredMixin,SuccessMessageMixin,DetailView):
+class StaffDetailView(DashboardMixin,DetailView):
     login_url = 'dashboard:login'
     model = Staff
     template_name = 'dashboard/staff/detail.html'
 
-class StaffDeleteView(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
+class StaffDeleteView(DashboardDeleteMixin,DeleteView):
     login_url = 'dashboard:login'
     model = Staff
     # template_name = 'dashboard/posts/post_.html'
