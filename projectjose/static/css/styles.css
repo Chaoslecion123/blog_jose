@@ -127,7 +127,6 @@ i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 200px;
 }
 
 .gallery img {
@@ -214,7 +213,7 @@ footer > div > hr{
 
 @media only screen and (min-width: 768px) {
   .ftdesc{
-    padding-left: 55px;
+    padding-left: 45px;
   }
     .ft-contserv{
     padding-top: 30px;
@@ -235,9 +234,15 @@ footer > div > hr{
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (max-width: 1920px) {
   .container{
-    max-width: 1824px;
+    min-width: 95%;
+  }
+}
+
+@media only screen and (min-width: 1520px) {
+  .container{
+    max-width: 1400px;
   }
 }
 
@@ -295,4 +300,8 @@ footer > div > hr{
 
 #navpos2 > a > img {
   max-height: 48px !important;
+}
+
+footer > div > div > div> h4{
+  font-size: 1.2rem;
 }

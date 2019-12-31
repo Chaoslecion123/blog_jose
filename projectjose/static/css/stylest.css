@@ -148,7 +148,7 @@ i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
 
 @media only screen and (min-width: 768px) {
   .ftdesc{
-    padding-left: 75px;
+    padding-left: 45px;
   }
     .ft-contserv{
     padding-top: 30px;
@@ -168,9 +168,9 @@ i.fab.fa-facebook-f,i.fab.fa-instagram,i.fab.fa-linkedin-in{
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (max-width: 1920px) {
   .container{
-    max-width: 1824px;
+    min-width: 95%;
   }
 }
 
@@ -416,4 +416,8 @@ footer > div > hr{
 
 #navpos2 > a > img {
   max-height: 48px !important;
+}
+
+footer > div > div > div> h4{
+  font-size: 1.2rem;
 }
