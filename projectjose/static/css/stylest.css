@@ -234,6 +234,8 @@ img.conimg{
 .ft-postcont{
   padding-top: 30px;
   padding-bottom: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .ft-conth1{
@@ -274,7 +276,7 @@ label{
 
 img.ft-carimg{
   width: 100%;
-  height: 750px;
+  height: 60vh;
   object-position: 50% 50%;
   object-fit: cover;
   filter: brightness(0.8);  
@@ -420,4 +422,8 @@ footer > div > hr{
 
 footer > div > div > div> h4{
   font-size: 1.2rem;
+}
+
+.carousel-control-next, .carousel-control-prev{
+  opacity: 1;
 }
