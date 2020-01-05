@@ -232,8 +232,8 @@ img.conimg{
 }
 
 .ft-postcont{
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   padding-left: 60px;
   padding-right: 60px;
 }
@@ -276,7 +276,7 @@ label{
 
 img.ft-carimg{
   width: 100%;
-  height: 60vh;
+  height: 75vh;
   object-position: 50% 50%;
   object-fit: cover;
   filter: brightness(0.8);  
@@ -307,17 +307,19 @@ img.ft-carimg{
 h1.ft-posth1{
   font-weight: 400;
   letter-spacing: 1pt;
+  padding-bottom: 25px;
 }
 
 .ft-postp{
   color: #A7A7A7;
   letter-spacing: 0.5pt;
-  font-size: 0.8em;
+  font-size: 1.2em;
+  line-height: 1.8em;
 }
 
 .ft-postgal{
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 55px;
+  padding-bottom: 55px;
 }
 
 .ft-postgal>.row{
@@ -361,7 +363,6 @@ body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6{
 
 body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div{
   position: relative;
-  width: fit-content;
 }
 
 body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
@@ -370,7 +371,7 @@ body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
   position: absolute;
   top: 20px;
   left: -20px;
-  width: 100%;
+  width: 50%;
   height: 100%;
   border: 1px solid #000;
   position: absolute;
@@ -394,7 +395,7 @@ body > div:nth-child(2) > div > div:nth-child(2) > div.col-lg-6 > div:after{
 
 
 .ft-post-img{
-  width: auto;
+  width: 90%;
   height: auto;
   object-position: 50% 50%;
   object-fit: cover;
